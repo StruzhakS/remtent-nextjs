@@ -1,0 +1,37 @@
+.burgerMenu {
+  position: fixed;
+  top: 20px;
+  right: 0;
+  /* height: 100%; */
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(3px);
+  padding: 10px 15px;
+  transition: transform 0.6s ease-in-out;
+  transform: translateX(100%);
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.burgerIcon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-color: transparent;
+}
+
+.menuItems {
+  display: flex;
+  height: 90%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+  .burgerMenu {
+    display: none;
+  }
+}

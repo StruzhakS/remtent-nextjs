@@ -1,0 +1,35 @@
+.headerContainer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 15px 0;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  z-index: 1;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  flex-direction: row-reverse;
+}
+
+.fixed {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+}
+@media screen and (min-width: 978px) {
+  .container {
+    width: 80%;
+    max-width: 1000px;
+    flex-direction: row;
+  }
+
+  .mobileMenuBtn {
+    display: none;
+  }
+}

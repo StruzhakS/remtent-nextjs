@@ -1,0 +1,28 @@
+.listOfVideo {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.videoList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: 768px) {
+  .listOfVideo {
+    margin: 40px auto;
+  }
+
+  .videoList {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

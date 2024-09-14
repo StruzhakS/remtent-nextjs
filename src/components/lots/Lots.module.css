@@ -1,0 +1,57 @@
+.section {
+  position: relative;
+  padding: 36px 0;
+}
+
+.title {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 36.57px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  color: rgba(241, 117, 86, 1);
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.title span {
+  color: rgba(2, 129, 94, 1);
+  text-transform: lowercase;
+}
+
+.categoryTitle {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(2, 129, 94, 1);
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.usedTentsLink {
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 19.5px;
+  text-align: left;
+  color: rgba(64, 99, 103, 1);
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 85.33px;
+    letter-spacing: -0.03em;
+    text-align: center;
+  }
+}

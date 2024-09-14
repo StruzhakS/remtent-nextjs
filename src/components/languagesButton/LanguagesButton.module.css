@@ -1,0 +1,17 @@
+.toggleButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.linkBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selected {
+  font-weight: bold;
+  color: rgb(79, 170, 101);
+}

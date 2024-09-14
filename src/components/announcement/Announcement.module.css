@@ -1,0 +1,347 @@
+.announSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.title,
+.relatedAdsTitle {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 19.57px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  color: rgba(241, 117, 86, 1);
+  margin-bottom: 22px;
+  margin-top: 12px;
+}
+
+.relatedAdsTitle {
+  color: rgba(2, 129, 94, 1);
+}
+
+.priceWrapper {
+  margin-top: auto;
+}
+
+.image {
+  width: 100%;
+}
+
+.imageBox {
+  width: 305px;
+  margin: 0 auto;
+}
+
+.descTitle {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  /* text-align: justify; */
+  margin-top: 10px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.descriptionWrapper {
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  text-align: justify;
+  margin-bottom: 22px;
+  width: 88%;
+}
+
+.price {
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 17.07px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  color: red;
+  margin-bottom: 11px;
+}
+
+.owner,
+.location,
+.createdAt {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21.94px;
+  letter-spacing: -0.03em;
+  text-align: left;
+}
+
+.tell {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: rgba(2, 129, 94, 1);
+}
+
+.owner {
+  font-weight: 700;
+}
+
+.callBtn {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 140px;
+  height: 32px;
+  gap: 8;
+  text-align: center;
+  margin: 0 auto;
+  padding: 5px 10px;
+  color: white;
+  background: rgba(241, 117, 86, 1);
+  margin-bottom: 11px;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 15px;
+}
+
+.callBtn > img {
+  width: 20px;
+  height: 20px;
+}
+
+.ownerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.relatedAdsList {
+  display: flex;
+  flex-direction: row;
+  padding: 16px 4px;
+  overflow-x: auto;
+  gap: 10px;
+}
+
+.relatedAdsItem {
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  min-width: 200px;
+  padding: 8px 4px;
+}
+
+.relatedAdsImage {
+  width: 100%;
+  height: 210px; /* Встановлюємо фіксовану висоту */
+  object-fit: cover; /* Зображення заповнює контейнер з збереженням пропорцій */
+}
+
+.relatedAdsPrice {
+  font-size: 16px;
+  font-weight: 700;
+  color: red;
+  padding-bottom: 12px;
+}
+
+.relatedAdsLocation,
+.relatedAdsDate {
+  font-size: 14px;
+}
+
+.buttonWrapper {
+  display: none;
+}
+.relatedPromTitle {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 19.57px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  color: rgba(241, 117, 86, 1);
+  margin-top: 30px;
+  text-transform: uppercase;
+}
+
+.relatedImage {
+  width: 100%;
+}
+
+.relatedAdsBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 40%;
+}
+
+.link {
+  color: red;
+  text-align: end;
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  padding-top: 12px;
+  padding-bottom: 6px;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: red;
+  animation: blink 1s infinite;
+}
+
+@media screen and (min-width: 768px) {
+  .link {
+    font-size: 20px;
+  }
+
+  .link::after {
+    width: 100%;
+  }
+  .relatedPromTitle {
+    margin: 0;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .relatedPromTitle {
+    margin: 0;
+  }
+
+  .buttonWrapper {
+    display: block;
+  }
+
+  .button {
+    background-color: transparent;
+    font-size: 60px;
+    margin-left: 20px;
+  }
+
+  .announSection {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; */
+  }
+
+  .annoucementWrapper {
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+  }
+
+  .title,
+  .relatedAdsTitle {
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: left;
+    margin-bottom: 46px;
+    word-break: break-word;
+  }
+
+  .relatedAdsTitle {
+    margin-bottom: 0px;
+    text-align: center;
+    color: rgba(2, 129, 94, 1);
+  }
+
+  .image {
+    width: 100%;
+  }
+
+  .imageBox {
+    width: 305px;
+  }
+
+  .price {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 30.57px;
+    letter-spacing: -0.03em;
+    text-align: left;
+  }
+
+  .descTitle {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 25px;
+    text-align: left;
+  }
+
+  .descriptionWrapper {
+    width: 50%;
+    font-size: 18px;
+    line-height: 30px;
+    text-align: left;
+  }
+
+  .ownerWrapper {
+    width: 20%;
+  }
+
+  .ownerWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .relatedAdsList {
+    display: flex;
+    flex-direction: row;
+    justify-content: normal;
+    align-items: normal;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 4px;
+  }
+
+  .relatedAdsList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .relatedAdsList {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .relatedAdsItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: normal;
+    align-items: normal;
+    /* min-width: 24%; */
+    /* width: 24%; */
+    width: calc((100% - 48px) / 4);
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .callBtn {
+    width: 100%;
+    height: 54px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21.94px;
+    text-align: center;
+  }
+}

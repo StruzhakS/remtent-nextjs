@@ -1,0 +1,134 @@
+.category {
+  position: relative;
+  padding: 0 16px;
+}
+
+.arrowBtn {
+  position: absolute;
+  background-color: transparent;
+  color: rgba(40, 111, 108, 1);
+  font-weight: 900;
+  font-size: 24px;
+  top: 20px;
+  font-size: 40px;
+}
+
+.left {
+  left: 32px;
+}
+
+.right {
+  right: 16px;
+}
+
+.arrowBtn:disabled {
+  color: rgba(15, 49, 65, 1);
+}
+
+.arrowWraper {
+  position: absolute;
+  top: 84px;
+  right: 20px;
+}
+
+.paginatedOffers {
+  display: flex;
+  width: 100%;
+  padding-left: 16px;
+  max-width: 1200px;
+  overflow-x: scroll;
+  gap: 18px;
+}
+
+.categoryImg {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.categoryCard {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  width: calc((100% - 80px) / 3.5);
+  cursor: pointer;
+  padding: 10px 0px;
+}
+
+.categoryTitle {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 11.5px;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+.categoryCard:hover .categoryTitle {
+  color: rgba(40, 111, 108, 1);
+}
+
+@media screen and (min-width: 768px) {
+  .category {
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .paginatedOffers {
+    width: 90%;
+    align-items: flex-start;
+    margin: 0 auto;
+    display: flex;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 25px;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+
+  .categoryCard {
+    display: flex;
+    flex-direction: column;
+    width: calc(90% / 6);
+    max-width: 140px;
+  }
+
+  .categoryImg {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .categoryTitle {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 17px;
+    line-height: 20px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .paginatedOffers {
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding-left: 5px;
+  }
+
+  .categoryCard {
+    width: 100%;
+    max-width: none;
+  }
+
+  .categoryImg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .categoryTitle {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
