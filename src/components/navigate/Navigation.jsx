@@ -1,15 +1,18 @@
-import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import s from '../header/Header.module.css';
-import css from '../footer/Footer.module.css';
-import { isMobile } from 'constants/useMediaQueries';
+import React, { useTransition } from "react";
+import s from "../../layout/header/Header.module.css";
+import css from "../../layout/footer/Footer.module.css";
+import Link from "next/link";
+import { isMobile } from "@/constants/useMediaQueries";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
-const Navigation = ({ t, footer, toggleBurgerMenu }) => {
-  const location = useLocation();
+const Navigation = ({ footer, toggleBurgerMenu }) => {
   const mobile = isMobile();
+  const router = useRouter();
+  const { t } = useTranslation("common");
 
   const isActive = path => {
-    return location.pathname === path;
+    return router.pathname === path;
   };
 
   const handleNavLinkClick = path => {
@@ -18,7 +21,7 @@ const Navigation = ({ t, footer, toggleBurgerMenu }) => {
     }
 
     if (footer) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     if (toggleBurgerMenu && mobile) {
@@ -28,41 +31,41 @@ const Navigation = ({ t, footer, toggleBurgerMenu }) => {
 
   return (
     <nav className={`${footer ? css.navigate : s.navigate}`}>
-      <NavLink
-        onClick={() => handleNavLinkClick('/')}
-        to={'/'}
-        className={isActive('/') ? s.active : ''}
+      <Link
+        onClick={() => handleNavLinkClick("/")}
+        href={"/"}
+        className={isActive("/") ? s.active : ""}
       >
-        {t('Homepage')}
-      </NavLink>
-      <NavLink
-        onClick={() => handleNavLinkClick('/promotions')}
-        to={'/promotions'}
-        className={isActive('/promotions') ? s.active : ''}
+        {t("Homepage")}
+      </Link>
+      <Link
+        onClick={() => handleNavLinkClick("/promotions")}
+        href={"/promotions"}
+        className={isActive("/promotions") ? s.active : ""}
       >
-        {t('Promotions')}
-      </NavLink>
-      <NavLink
-        onClick={() => handleNavLinkClick('/video-tips')}
-        to={'/video-tips'}
-        className={isActive('/video-tips') ? s.active : ''}
+        {t("Promotions")}
+      </Link>
+      <Link
+        onClick={() => handleNavLinkClick("/video-tips")}
+        href={"/video-tips"}
+        className={isActive("/video-tips") ? s.active : ""}
       >
-        {t('Video tips')}
-      </NavLink>
-      <NavLink
-        onClick={() => handleNavLinkClick('/used-tents')}
-        to={'/used-tents'}
-        className={isActive('/used-tents') ? s.active : ''}
+        {t("Video tips")}
+      </Link>
+      <Link
+        onClick={() => handleNavLinkClick("/used-tents")}
+        href={"/used-tents"}
+        className={isActive("/used-tents") ? s.active : ""}
       >
-        {t('Used tents')}
-      </NavLink>
-      <NavLink
-        onClick={() => handleNavLinkClick('/contacts')}
-        to={'/contacts'}
-        className={isActive('/contacts') ? s.active : ''}
+        {t("Used tents")}
+      </Link>
+      <Link
+        onClick={() => handleNavLinkClick("/contacts")}
+        href={"/contacts"}
+        className={isActive("/contacts") ? s.active : ""}
       >
-        {t('Сontacts')}
-      </NavLink>
+        {t("Сontacts")}
+      </Link>
     </nav>
   );
 };

@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import MainLayout from "@/layout/mainLayout/MainLayout";
-// import HomeTab from "src/tabs/homeTab/HomeTab";
+import HomeTab from "src/tab/homeTab/HomeTab";
 
 //i18n
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import HomeTab from "@/tab/homeTab/HomeTab";
-// import HomeTab from "src/tabs/homeTab/HomeTab";
 
 export default function HomePage(props) {
   const { serverPath } = props;
@@ -21,12 +19,20 @@ export default function HomePage(props) {
   return <HomeTab serverPath={serverPath} />;
 }
 
-export const getStaticProps = async ({ locale }) => {
-  const props = await serverSideTranslations(locale, ["common"]);
+// export const getStaticProps = async ({ locale }) => {
+//   const props = await serverSideTranslations(locale, ["common"]);
+//   return {
+//     props,
+//   };
+// };
+
+export async function getServerSideProps(context) {
   return {
-    props,
+    props: {
+      ...(await serverSideTranslations(context.locale, ["common"])),
+    },
   };
-};
+}
 
 HomePage.getLayout = function getLayout(page) {
   return (

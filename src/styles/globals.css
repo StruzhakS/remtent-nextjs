@@ -43,3 +43,21 @@ body {
 .modal-open {
   overflow: hidden;
 }
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  #root {
+    padding-top: 0px;
+  }
+}

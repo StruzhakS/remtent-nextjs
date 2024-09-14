@@ -4,9 +4,10 @@
     "paths": {
       "@/components/*": ["src/components/*"],
       "@/layout/*": ["src/layout/*"],
-      "@/tab/*": ["src/tabs/*"],
+      "@/tab/*": ["src/tab/*"],
       "@/blocks/*": ["src/blocks/*"],
-      "@/images/*": ["public/images/*"]
+      "@/images/*": ["public/images/*"],
+      "@/constants/*": ["src/constants/*"]
     }
   }
 }

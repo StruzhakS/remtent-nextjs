@@ -9,7 +9,7 @@ const MainHead = props => {
       <title>{title}</title>
       <meta name="description" content={description} />
       {noindex && <meta name="robots" content="noindex, nofollow" />}
-      <link rel="shortcut icon" href="/favicon/SS_icon.svg" type="image/x-icon" />
+      <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
       {canonical && <link rel="canonical" href={`${host}${canonical}`}></link>}
     </Head>
   );

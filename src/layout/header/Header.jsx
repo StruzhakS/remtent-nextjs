@@ -1,57 +1,114 @@
 import React, { useEffect, useState } from "react";
 import s from "./Header.module.css";
-import Image from "next/image";
-import logo from "@/images/header-logo.svg";
-import Navigation from "@/components/navigation/Navigation";
-// import LanguageBtn from "@/components/languageBtn/LanguageBtn";
-// import MobileMenu from "@/components/mobileMenu/MobileMenu";
+import Navigation from "@/components/navigate/Navigation";
+import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
+import { useTranslation } from "react-i18next";
 import Link from "next/link";
+import axios from "axios";
+// image
+import Image from "next/image";
+import ua from "@/images/Ukraine.webp";
+import en from "@/images/en_flag.webp";
+import ru from "@/images/russ.webp";
+import logo from "@/images/logo-tent.svg";
+import phoneLogo from "@/images/Phonefooter.webp";
+import burgerMenu from "@/images/burger-menu.svg";
+import i18next from "i18next";
+import { useRouter } from "next/router";
+import LanguagesButtons from "@/components/languagesButton/LanguagesButton";
 
-const Header = () => {
-  const [windowWidth, setWindowWidth] = useState(null);
-  const mobileScreen = windowWidth < 978;
-  // const [fixed, setFixed] = useState(false);
+const Header = ({ toggleBurgerMenu, isOpen, setScrollToUsedTents }) => {
+  const router = useRouter();
+  const { locale } = router;
+  const [lang, setLang] = useState(locale ? locale : "uk");
 
-  // Юзефект, щою встановити хедер фіксованим при пролистуванні першого блоку
   // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const authopassSection = document.getElementById("functional");
-  //     if (authopassSection) {
-  //       const rect = authopassSection.getBoundingClientRect();
-  //       const isScrolled = window.scrollY > rect.top - 80 + window.pageYOffset;
-  //       setFixed(isScrolled);
+  //   axios.defaults.headers.common["Accept-Language"] = selectedLanguage;
+
+  //   axios.interceptors.request.use(config => {
+  //     const csrfToken = document.cookie.match(/csrftoken=([^;]+)/);
+  //     if (csrfToken) {
+  //       config.headers["X-CSRFToken"] = csrfToken[1];
   //     }
-  //   };
+  //     return config;
+  //   });
+  // }, [selectedLanguage]);
 
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+  // const changeLanguage = async lng => {
+  //   try {
+  //     await i18n.changeLanguage(lng);
+  //     setSelectedLanguage(lng);
 
-  // Юзефект для слідкування за шириною екрана
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
+  //     const response = await axios.post("https://remtent.com/api/set-language/", { language: lng });
+  //     console.log("Language changed on backend:", response.data);
 
-    setWindowWidth(window.innerWidth);
+  //     window.location.reload();
+  //   } catch (error) {
+  //     console.error("Error changing language on backend:", error);
+  //   }
+  // };
 
-    window.addEventListener("resize", handleResize);
+  // const handleSelectChange = event => {
+  //   const selectedValue = event.target.value;
+  //   changeLanguage(selectedValue);
+  // };
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const handlCheckLang = val => {
+    setLang(val);
+    router.push(router.pathname, router.asPath, {
+      locale: val,
+    });
+    // closeModal && closeModal();
+  };
 
   return (
-    <header className={`${s.headerContainer}  ${fixed ? s.fixed : ""}`}>
-      <div className={s.container}>
-        <Link href={"/"}>
-          <Image src={logo} alt="header logo" />
-        </Link>
-        <Navigation />
-        {/* {mobileScreen && <MobileMenu />}
-        {!mobileScreen && <LanguageBtn />} */}
+    <header className={s.headerContainer}>
+      <Link className={s.tentLink} href={"/"}>
+        <Image
+          src={logo}
+          className={s.headerLogo}
+          width={150}
+          height={40}
+          alt="logo repair tent"
+          priority
+        />
+      </Link>
+      <div className={s.headerNavigate}>
+        <Navigation
+          toggleBurgerMenu={toggleBurgerMenu}
+          setScrollToUsedTents={setScrollToUsedTents}
+        />
+        <div className={s.languageWrapper}>
+          <Image
+            src={lang === "uk" ? ua : lang === "ru" ? ru : en}
+            alt="flag"
+            width={26}
+            height={24}
+          />
+          <select
+            value={lang}
+            onChange={e => handlCheckLang(e.target.value)}
+            className={s.languagesSelect}
+          >
+            <option value="uk">UA</option>
+            <option value="en">EN</option>
+            <option value="ru">RU</option>
+          </select>
+        </div>
+        {/* <LanguagesButtons /> */}
+        <a href="tel:+380501589860" className={s.telHeader}>
+          <Image src={phoneLogo} width={24} height={24} alt="phone logo" />
+          +380501589860
+        </a>
       </div>
+      <ScrollToTopButton />
+      <button
+        type="button"
+        className={isOpen ? s.hiddenMenuBtn : s.menuBtn}
+        onClick={toggleBurgerMenu}
+      >
+        <Image src={burgerMenu} alt="burger menu logo" />
+      </button>
     </header>
   );
 };

@@ -1,35 +1,131 @@
 .headerContainer {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  padding: 15px 0;
-  background-color: rgba(0, 0, 0, 0);
-  color: white;
-  z-index: 1;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 90%;
-  margin: 0 auto;
-  flex-direction: row-reverse;
-}
-
-.fixed {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.8);
-  transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.938);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  z-index: 5;
 }
-@media screen and (min-width: 978px) {
-  .container {
-    width: 80%;
-    max-width: 1000px;
-    flex-direction: row;
+
+.menuBtn {
+  opacity: 1;
+  transition: opacity 1.5s;
+
+  background-color: transparent;
+}
+
+.hiddenMenuBtn {
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+
+.headerNavigate {
+  display: none;
+}
+
+.exitBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  padding: 5px 10px;
+  background: rgba(2, 129, 94, 1);
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29.05px;
+  cursor: pointer;
+}
+
+.navigate {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 10px;
+  gap: 20px;
+  width: 100%;
+}
+
+.navigate a {
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+  word-wrap: break-word;
+}
+.navigate a.active {
+  color: orange;
+}
+
+@media screen and (min-width: 768px) {
+  .headerContainer {
+    justify-content: initial;
+    margin-bottom: 10px;
+    position: relative;
+    width: 90%;
+    padding: 0;
   }
 
-  .mobileMenuBtn {
+  .menuBtn {
     display: none;
+  }
+
+  .headerNavigate {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .headerLogo {
+    width: none;
+  }
+
+  .navigate {
+    flex-direction: row;
+    padding: 0;
+    width: 65%;
+    margin-right: 10px;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .telHeader {
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24.38px;
+    text-align: left;
+    color: rgba(2, 129, 94, 1);
+  }
+
+  .languageWrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: auto;
+    margin-right: 20px;
+  }
+
+  .languagesSelect {
+    margin-left: auto;
+    font-weight: bold;
+    width: 44px;
+    height: 24px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .headerNavigate {
+    flex-wrap: wrap;
+  }
+  .navigate {
+    flex-wrap: wrap;
   }
 }
