@@ -5,6 +5,8 @@ module.exports = {
   i18n,
   images: {
     dangerouslyAllowSVG: true,
+    domains: ["i.ytimg.com"],
+
     // contentDispositionType: "attachment",
     // contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },

@@ -5,7 +5,7 @@ import uaFlag from "@/images/Ukraine.webp";
 import enFlag from "@/images/en_flag.webp";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import data from "../../data/languages.json";
+// import data from "../../data/languages.json";
 import { i18n } from "next-i18next";
 
 const LanguagesButtons = () => {
@@ -16,13 +16,11 @@ const LanguagesButtons = () => {
 
   useEffect(() => {
     const currentLanguage = i18n.language;
-    console.log("currentLanguage", currentLanguage);
+
     if (currentLanguage === "uk") setSelectedButton(2);
     else if (currentLanguage === "en") setSelectedButton(3);
     else setSelectedButton(1);
   }, []);
-
-  console.log(lang);
 
   const handleButtonClick = buttonId => {
     setSelectedButton(buttonId);

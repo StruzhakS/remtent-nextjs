@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import s from "./Header.module.css";
 import Navigation from "@/components/navigate/Navigation";
 import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
-import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import axios from "axios";
-// image
+import { useRouter } from "next/router";
+import { i18n } from "next-i18next";
+
+// images
 import Image from "next/image";
 import ua from "@/images/Ukraine.webp";
 import en from "@/images/en_flag.webp";
@@ -13,9 +15,6 @@ import ru from "@/images/russ.webp";
 import logo from "@/images/logo-tent.svg";
 import phoneLogo from "@/images/Phonefooter.webp";
 import burgerMenu from "@/images/burger-menu.svg";
-import i18next from "i18next";
-import { useRouter } from "next/router";
-import LanguagesButtons from "@/components/languagesButton/LanguagesButton";
 
 const Header = ({ toggleBurgerMenu, isOpen, setScrollToUsedTents }) => {
   const router = useRouter();
@@ -34,19 +33,18 @@ const Header = ({ toggleBurgerMenu, isOpen, setScrollToUsedTents }) => {
   //   });
   // }, [selectedLanguage]);
 
-  // const changeLanguage = async lng => {
-  //   try {
-  //     await i18n.changeLanguage(lng);
-  //     setSelectedLanguage(lng);
+  const changeLanguage = async lng => {
+    try {
+      await i18n.changeLanguage(lng);
 
-  //     const response = await axios.post("https://remtent.com/api/set-language/", { language: lng });
-  //     console.log("Language changed on backend:", response.data);
+      const response = await axios.post("https://remtent.com/api/set-language/", { language: lng });
+      console.log("Language changed on backend:", response.data);
 
-  //     window.location.reload();
-  //   } catch (error) {
-  //     console.error("Error changing language on backend:", error);
-  //   }
-  // };
+      // window.location.reload();
+    } catch (error) {
+      console.error("Error changing language on backend:", error);
+    }
+  };
 
   // const handleSelectChange = event => {
   //   const selectedValue = event.target.value;
@@ -58,6 +56,8 @@ const Header = ({ toggleBurgerMenu, isOpen, setScrollToUsedTents }) => {
     router.push(router.pathname, router.asPath, {
       locale: val,
     });
+    changeLanguage(val);
+
     // closeModal && closeModal();
   };
 

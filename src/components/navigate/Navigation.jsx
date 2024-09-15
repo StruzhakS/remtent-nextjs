@@ -1,4 +1,4 @@
-import React, { useTransition } from "react";
+import React from "react";
 import s from "../../layout/header/Header.module.css";
 import css from "../../layout/footer/Footer.module.css";
 import Link from "next/link";
@@ -9,7 +9,7 @@ import { useTranslation } from "next-i18next";
 const Navigation = ({ footer, toggleBurgerMenu }) => {
   const mobile = isMobile();
   const router = useRouter();
-  const { t } = useTranslation("common");
+  const { t } = useTranslation();
 
   const isActive = path => {
     return router.pathname === path;

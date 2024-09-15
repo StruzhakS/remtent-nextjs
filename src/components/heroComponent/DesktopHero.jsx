@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import s from "./HeroComponent.module.css";
 
 import smallImg from "@/images/heroImageSmall.webp";
@@ -38,26 +38,26 @@ const DesktopHero = React.memo(() => {
     };
   }, []);
 
-  useEffect(() => {
-    if (isVisible) {
-      const img = new Image();
-      img.src = imageUrl;
-      img.onload = () => {
-        if (heroRef.current) {
-          heroRef.current.style.backgroundImage = `url(${imageUrl})`;
-        }
-      };
-    }
-  }, [isVisible]);
+  // useEffect(() => {
+  //   if (isVisible) {
+  //     const img = new Image();
+  //     img.src = imageUrl;
+  //     img.onload = () => {
+  //       if (heroRef.current) {
+  //         heroRef.current.style.backgroundImage = `url(${imageUrl})`;
+  //       }
+  //     };
+  //   }
+  // }, [isVisible]);
 
   return (
-    <div style={{ display: "flex", gap: "10px", width: "90%", margin: "0 auto" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+    <div className={s.imagesWrapper}>
+      <div className={s.smallImagesWrapper}>
         <Image src={smallImg} width={252} height={168} alt="tent repair" />
         <Image src={smallImg_2} width={252} height={168} alt="tent repair" />
         <Image src={smallImg_3} width={252} height={168} alt="tent repair" />
       </div>
-      <div className={s.imageWrapper} style={{ width: "100%" }} ref={heroRef}>
+      <div className={s.imageWrapper} ref={heroRef}>
         <div className={s.heroTextDesktop}>
           <p className={s.subTitleDesktop}>
             {t("repair_trucks_trailers_semi_trailers_grain_trailers")}

@@ -39,8 +39,8 @@ HomePage.getLayout = function getLayout(page) {
     <MainLayout
       animation
       canonical={"/"}
-      title="Ремонт тентов Днепр | Ремонт Тента"
-      description="Предлагаем качественный ремонт тентов в Днепре. Быстро, надежно и доступно. Восстановление любых повреждений. Звоните сейчас и получите скидку! +380501589860"
+      title={"home_page_title"}
+      description={"home_page_description"}
     >
       {page}
     </MainLayout>
