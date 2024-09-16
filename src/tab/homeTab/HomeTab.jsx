@@ -9,6 +9,7 @@ import VideoTutorials from "@/components/videoTutorials/VideoTutorials";
 import Lots from "@/components/lots/Lots";
 import FindUs from "@/components/findUs/FindUs";
 import Franchise from "@/components/franchise/Franchise";
+
 // import HowWeWork from "@/components/howWeWork/HowWeWork";
 // import Lots from "@/components/lots/Lots";
 // import UniqueCategories from "@/components/uniqueCategories/UniqueCategories";
