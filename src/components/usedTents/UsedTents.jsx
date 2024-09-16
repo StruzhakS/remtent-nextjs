@@ -77,7 +77,7 @@ const UsedTents = ({ selectedCategory, isPage, filteredTents }) => {
   }, [isMobile]);
 
   const handleClick = id => {
-    navigateToPage(`/announcement/${id}`);
+    navigateToPage(`/used-tents/${id}`);
     window.scrollTo({
       top: 0,
       behavior: "instant",

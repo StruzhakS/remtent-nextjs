@@ -22,8 +22,9 @@ const SingleUsedTentTab = () => {
   const scrollContainerRef = useRef(null);
   const [pageCount, setPageCount] = useState(1);
   // const navigate = useNavigate();
+
   const navigateToAction = el => {
-    router.push(`/used-tent/${el?.id}`);
+    router.push(`/used-tents/${el?.id}`);
   };
 
   const itemsPerPage = 4;
