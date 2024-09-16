@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import MainLayout from "@/layout/mainLayout/MainLayout";
-import HomeTab from "src/tab/homeTab/HomeTab";
 import ContactsTab from "src/tab/contactTab/ContactTab";
 
 //i18n
@@ -20,20 +19,20 @@ export default function ContactPage(props) {
   return <ContactsTab serverPath={serverPath} />;
 }
 
-// export const getStaticProps = async ({ locale }) => {
-//   const props = await serverSideTranslations(locale, ["common"]);
-//   return {
-//     props,
-//   };
-// };
-
-export async function getServerSideProps(context) {
+export const getStaticProps = async ({ locale }) => {
+  const props = await serverSideTranslations(locale, ["common"]);
   return {
-    props: {
-      ...(await serverSideTranslations(context.locale, ["common"])),
-    },
+    props,
   };
-}
+};
+
+// export async function getServerSideProps(context) {
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(context.locale, ["common"])),
+//     },
+//   };
+// }
 
 ContactPage.getLayout = function getLayout(page) {
   return (

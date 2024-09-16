@@ -40,6 +40,7 @@ const UsedTentsCategories = ({ category = [], onCategorySelect }) => {
                 alt={card.title}
                 width={"auto"}
                 height={"auto"}
+                priority
               />
             ) : (
               <div className={s.placeholderImg}>No Image</div>

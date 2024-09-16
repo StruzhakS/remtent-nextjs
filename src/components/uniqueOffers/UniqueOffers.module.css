@@ -179,7 +179,7 @@
     display: flex;
     align-items: center;
     /* height: 40%; */
-    margin-top: auto;
+    /* margin-top: auto; */
     margin-bottom: 10px;
     overflow: hidden;
   }

@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
 import MainLayout from "@/layout/mainLayout/MainLayout";
-import AllPromotionsTab from "@/tab/allPromotionsTab/allPromotionsTab";
-
+import SinglePromotionTab from "@/tab/singlePromotionTab/SinglePromotionTab";
 //i18n
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import SinglePromotionTab from "@/tab/singlePromotionTab/SinglePtomotionTab";
 
 export default function SinglePromotionPage(props) {
   const { serverPath } = props;

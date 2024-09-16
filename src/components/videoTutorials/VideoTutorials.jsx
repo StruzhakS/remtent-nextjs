@@ -11,8 +11,6 @@ import Link from "next/link";
 
 const YOU_TUBE_APIKEY = process.env.NEXT_PUBLIC_YOU_TUBE_APIKEY;
 
-console.log("YOU_TUBE_APIKEY", YOU_TUBE_APIKEY);
-
 // const CHANNEL_ID = process.env.REACT_APP_CHANNEL_ID;
 
 const VideoTutorials = () => {

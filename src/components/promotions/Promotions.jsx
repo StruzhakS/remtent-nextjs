@@ -13,10 +13,8 @@ import { useRouter } from "next/router";
 
 const Promotion = () => {
   const { t } = useTranslation();
-  // const { id } = useParams();
-
   const router = useRouter();
-  const { id } = router.query; // Отримуємо id з URL
+  const { id } = router.query;
   const [promotion, setPromotion] = useState(null);
   const [error, setError] = useState(null);
   const [clientInfo, setUserInfo] = useState({ name: "", phone: "" });
@@ -43,7 +41,6 @@ const Promotion = () => {
 
     getAllPromotions();
   }, [id]);
-  // [id, i18n.language];
 
   const handleChange = e => {
     const { name, value } = e.target;

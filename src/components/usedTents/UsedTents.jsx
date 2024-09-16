@@ -6,6 +6,7 @@ import PaginatedUniqueOffers from "@/components/paginatedUniqueOffers/PaginatedU
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useMediaQuery } from "react-responsive";
+import Image from "next/image";
 
 export function TentsByUser({ currentItems, handleClick, sectionRef, isPage }) {
   const { t } = useTranslation();
@@ -30,11 +31,11 @@ export function TentsByUser({ currentItems, handleClick, sectionRef, isPage }) {
             onClick={() => handleClick(el.id)}
           >
             <picture>
-              <img
+              <Image
                 className={s.usedTentImage}
                 src={el.photos.length > 0 ? `https://remtent.com${el.photos[0].photo}` : usedTent}
                 alt={el.title}
-                loading="lazy"
+                priority
               />
             </picture>
             <p className={s.tentTitle}>{el.title}</p>

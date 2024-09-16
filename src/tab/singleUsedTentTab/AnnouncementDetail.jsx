@@ -1,30 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import s from "./Announcement.module.css";
-import { useTranslation } from "next-i18next";
-import logoPhone from "@/images/Phonetel.png";
+import { useTranslation } from "react-i18next";
+import logoPhone from "../../images/Phonetel.png";
 import moment from "moment";
 import axios from "axios";
-import usedTent from "@/images/usedTent.webp";
-// import { useParams, Link, useNavigate } from "react-router-dom";
+import usedTent from "../../images/usedTent.webp";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "./CustomImageGallery.css";
-import { useRouter } from "next/router";
 import Image from "next/image";
-import Link from "next/link";
 
-const SingleUsedTentTab = () => {
+const AnnouncementDetail = () => {
   const { t } = useTranslation();
-  const router = useRouter();
-  const { id } = router.query;
+  const { id } = useParams();
   const [tent, setTent] = useState(null);
   const [relatedAds, setRelatedAds] = useState([]);
   const scrollContainerRef = useRef(null);
   const [pageCount, setPageCount] = useState(1);
-  // const navigate = useNavigate();
-  const navigateToAction = el => {
-    router.push(`/used-tent/${el?.id}`);
-  };
+  const navigate = useNavigate();
 
   const itemsPerPage = 4;
   const totalItems = relatedAds.length;
@@ -166,7 +160,7 @@ const SingleUsedTentTab = () => {
               className={s.relatedAdsItem}
               key={el?.id}
               onClick={() => {
-                navigateToAction(el);
+                navigate(`/announcement/${el?.id}`);
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
             >
@@ -194,7 +188,7 @@ const SingleUsedTentTab = () => {
           ))}
         </ul>
         <div style={{ marginLeft: "auto", marginTop: "8px" }}>
-          <Link href={"/used-tents"} className={s.link}>
+          <Link to={"/used-tents"} className={s.link}>
             {t("All banner")} &rarr;
           </Link>
         </div>
@@ -203,4 +197,4 @@ const SingleUsedTentTab = () => {
   );
 };
 
-export default SingleUsedTentTab;
+export default AnnouncementDetail;

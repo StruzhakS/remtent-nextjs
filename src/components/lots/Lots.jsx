@@ -37,7 +37,7 @@ const Lots = ({ isPage }) => {
     const fetchUsedTents = async () => {
       try {
         const response = await axios.get("https://remtent.com/api/posts/", {
-          params: { lang: i18n.language },
+          // params: { lang: i18n.language },
         });
         setUsedTents(response.data);
         filterTents(response.data, selectedCategory, searchQuery);

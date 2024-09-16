@@ -19,20 +19,20 @@ export default function AllPromotionsPage(props) {
   return <AllPromotionsTab serverPath={serverPath} />;
 }
 
-// export const getStaticProps = async ({ locale }) => {
-//   const props = await serverSideTranslations(locale, ["common"]);
-//   return {
-//     props,
-//   };
-// };
-
-export async function getServerSideProps(context) {
+export const getStaticProps = async ({ locale }) => {
+  const props = await serverSideTranslations(locale, ["common"]);
   return {
-    props: {
-      ...(await serverSideTranslations(context.locale, ["common"])),
-    },
+    props,
   };
-}
+};
+
+// export async function getServerSideProps(context) {
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(context.locale, ["common"])),
+//     },
+//   };
+// }
 
 AllPromotionsPage.getLayout = function getLayout(page) {
   return (

@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import MainLayout from "@/layout/mainLayout/MainLayout";
+import AllUsedTentsTab from "@/tab/allUsedTentsTab/AllUsedTentsTab";
 
 //i18n
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import VideoTab from "@/tab/videoTab/VideoTab";
-import AllUsedTentsTab from "@/tab/allUsedTentsTab/AllUsedTentsTab";
 
 export default function AllUsedTentsPage(props) {
   const { serverPath } = props;
@@ -20,20 +19,20 @@ export default function AllUsedTentsPage(props) {
   return <AllUsedTentsTab serverPath={serverPath} />;
 }
 
-// export const getStaticProps = async ({ locale }) => {
-//   const props = await serverSideTranslations(locale, ["common"]);
-//   return {
-//     props,
-//   };
-// };
-
-export async function getServerSideProps(context) {
+export const getStaticProps = async ({ locale }) => {
+  const props = await serverSideTranslations(locale, ["common"]);
   return {
-    props: {
-      ...(await serverSideTranslations(context.locale, ["common"])),
-    },
+    props,
   };
-}
+};
+
+// export async function getServerSideProps(context) {
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(context.locale, ["common"])),
+//     },
+//   };
+// }
 
 AllUsedTentsPage.getLayout = function getLayout(page) {
   return (

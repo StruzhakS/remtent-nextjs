@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import s from "./SearchTents.module.css";
-import searchLogo from "@/images/search.svg";
+import search_lupa from "@/images/lupa.svg";
 import Image from "next/image";
 
 const SearchTents = ({ t, handleSubmit }) => {
@@ -25,10 +25,11 @@ const SearchTents = ({ t, handleSubmit }) => {
         {t("Search")}
         <Image
           className={s.searchImage}
-          src={searchLogo}
+          src={search_lupa}
           alt="search"
           width={"auto"}
           height={"auto"}
+          priority
         />
       </button>
     </form>
