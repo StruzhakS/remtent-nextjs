@@ -52,7 +52,7 @@ const Video = ({ el }) => {
             priority // може покращити продуктивність
           />
         </div>
-        <h3 className={s.videoTitle}>{el.snippet.title}</h3>
+        <h2 className={s.videoTitle}>{el.snippet.title}</h2>
         <p className={s.videoDescription}>{videoDescription.slice(0, 100)}</p>
       </div>
       {modalOpen && (

@@ -60,7 +60,8 @@
   word-wrap: break-word;
 }
 .navigate a.active {
-  color: orange;
+  font-weight: 800;
+  color: rgba(241, 117, 86, 1);
 }
 
 @media screen and (min-width: 768px) {
