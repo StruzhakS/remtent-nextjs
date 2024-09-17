@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import s from "./PaginatedCategories.module.css";
-// import axios from 'axios';
-// import { isMobile } from "constants/useMediaQueries";
-import { useTranslation } from "next-i18next"; // імпорт функціоналу перекладу
+import { useTranslation } from "next-i18next";
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
 
 const images = require.context("../../../public/images", true);
 const cardsPerPage = 6;
@@ -24,19 +21,11 @@ const categoriesArray = [
   { title: "Тентовый инструмент", logo: "Elipse 19.webp" },
 ];
 
-const PaginatedCategories = ({ onCategorySelect, showArrows = true }) => {
+const PaginatedCategories = ({ onCategorySelect, showArrows = true, isMobile }) => {
   const { t } = useTranslation(); // використання функціоналу перекладу
   const [startIndex, setStartIndex] = useState(0);
   const [categories, setCategories] = useState([]);
   // const mobileScreen = isMobile();
-
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-
-  const [isMobileState, setIsMobileState] = useState(false);
-
-  useEffect(() => {
-    setIsMobileState(isMobile);
-  }, [isMobile]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -61,7 +50,7 @@ const PaginatedCategories = ({ onCategorySelect, showArrows = true }) => {
   const renderCards = () => {
     const endIndex = startIndex + cardsPerPage;
 
-    const renderedCategories = isMobileState ? categories : categories.slice(startIndex, endIndex);
+    const renderedCategories = isMobile ? categories : categories.slice(startIndex, endIndex);
 
     return renderedCategories.map((card, index) => (
       <div key={index} className={s.categoryCard} onClick={() => handleCategoryClick(card.title)}>

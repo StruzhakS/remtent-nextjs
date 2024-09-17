@@ -1,43 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import s from "./Footer.module.css";
 import logo from "@/images/logo-tent.svg";
 import pointFooter from "@/images/pointerFooter.png";
 import phoneFooter from "@/images/Phonefooter.webp";
-import { isMobile } from "@/constants/useMediaQueries";
 import Navigation from "@/components/navigate/Navigation";
 import { useTranslation } from "next-i18next";
 import email from "@/images/email.png";
 import SocialNetwork from "@/components/socialNetwork/SocialNetwork";
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
 import Link from "next/link";
 
-const Footer = ({ setScrollToUsedTents, toggleBurgerMenu }) => {
-  // Додано пропси
-
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-
-  const [isMobileState, setIsMobileState] = useState(false);
-
-  useEffect(() => {
-    setIsMobileState(isMobile);
-  }, [isMobile]);
-
+const Footer = ({ isMobile }) => {
   const { t } = useTranslation();
-  // const location = useLocation();
 
-  // Перевірка наявності функції
-  // const handleUsedTentsClick = e => {
-  //   e.preventDefault();
-  //   if (typeof setScrollToUsedTents === 'function') {
-  //     setScrollToUsedTents(true);
-  //   }
-  //   if (toggleBurgerMenu) {
-  //     toggleBurgerMenu();
-  //   }
-  // };
-
-  return isMobileState ? (
+  return isMobile ? (
     <footer className={s.footerSection}>
       <Link href={"/"}>
         <Image className={s.footerLogo} src={logo} width={265} height={73} alt="logo repair tent" />
@@ -89,7 +65,7 @@ const Footer = ({ setScrollToUsedTents, toggleBurgerMenu }) => {
         <SocialNetwork />
       </div>
 
-      <Navigation t={t} footer={true} />
+      <Navigation t={t} footer={true} isMobile={isMobile} />
     </footer>
   );
 };

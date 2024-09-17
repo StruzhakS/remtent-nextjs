@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import s from "./HowWeWorkCard.module.css";
 import arrowRight from "@/images/ArrowRight.png";
-import { isMobile } from "@/constants/useMediaQueries";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
 
 const images = require.context("../../../public/images", true);
 
-const Card = ({ data }) => {
+const Card = ({ data, isMobile }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { t } = useTranslation();
 
@@ -17,17 +15,9 @@ const Card = ({ data }) => {
   };
   const { title, subscription, logo } = data;
 
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-
-  const [isMobileState, setIsMobileState] = useState(false);
-
-  useEffect(() => {
-    setIsMobileState(isMobile);
-  }, [isMobile]);
-
   const imagePath = images(`./${logo}`);
 
-  const slicedCharachters = isMobileState ? 98 : 176;
+  const slicedCharachters = isMobile ? 98 : 176;
 
   return (
     <div className={s.card}>

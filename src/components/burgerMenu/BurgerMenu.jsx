@@ -3,7 +3,7 @@ import s from "./BurgerMenu.module.css";
 import Navigation from "@/components/navigate/Navigation";
 import LanguagesButtons from "../languagesButton/LanguagesButton";
 
-const BurgerMenu = ({ toggleBurgerMenu, isOpen, setScrollToUsedTents }) => {
+const BurgerMenu = ({ toggleBurgerMenu, isOpen, isMobile }) => {
   const menuRef = useRef(null);
 
   return (
@@ -12,10 +12,7 @@ const BurgerMenu = ({ toggleBurgerMenu, isOpen, setScrollToUsedTents }) => {
         &#10006;
       </button>
       <div className={s.menuItems}>
-        <Navigation
-          toggleBurgerMenu={toggleBurgerMenu}
-          // setScrollToUsedTents={setScrollToUsedTents}
-        />
+        <Navigation toggleBurgerMenu={toggleBurgerMenu} isMobile={isMobile} />
         <LanguagesButtons />
       </div>
     </div>

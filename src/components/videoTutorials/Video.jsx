@@ -1,19 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import s from "./VideoTutorials.module.css";
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
-import { useRouter } from "next/router";
 
-const Video = ({ el }) => {
+const Video = ({ el, isMobile }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const router = useRouter();
-
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-  const [isMobileState, setIsMobileState] = useState(false);
-
-  useEffect(() => {
-    setIsMobileState(isMobile);
-  }, [isMobile]);
 
   const openModal = () => {
     setModalOpen(true);
@@ -23,7 +13,7 @@ const Video = ({ el }) => {
     setModalOpen(false);
   };
 
-  const videoDescription = isMobileState
+  const videoDescription = isMobile
     ? el.snippet.localized?.description || el.snippet.description.split(".")[0]
     : el.snippet.localized?.description || el.snippet.description;
 

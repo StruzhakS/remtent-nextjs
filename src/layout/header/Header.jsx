@@ -16,22 +16,10 @@ import logo from "@/images/logo-tent.svg";
 import phoneLogo from "@/images/Phonefooter.webp";
 import burgerMenu from "@/images/burger-menu.svg";
 
-const Header = ({ toggleBurgerMenu, isOpen, setScrollToUsedTents }) => {
+const Header = ({ toggleBurgerMenu, isOpen, setScrollToUsedTents, isMobile }) => {
   const router = useRouter();
   const { locale } = router;
   const [lang, setLang] = useState(locale ? locale : "uk");
-
-  // useEffect(() => {
-  //   axios.defaults.headers.common["Accept-Language"] = selectedLanguage;
-
-  //   axios.interceptors.request.use(config => {
-  //     const csrfToken = document.cookie.match(/csrftoken=([^;]+)/);
-  //     if (csrfToken) {
-  //       config.headers["X-CSRFToken"] = csrfToken[1];
-  //     }
-  //     return config;
-  //   });
-  // }, [selectedLanguage]);
 
   const changeLanguage = async lng => {
     try {
@@ -39,17 +27,10 @@ const Header = ({ toggleBurgerMenu, isOpen, setScrollToUsedTents }) => {
 
       const response = await axios.post("https://remtent.com/api/set-language/", { language: lng });
       console.log("Language changed on backend:", response.data);
-
-      // window.location.reload();
     } catch (error) {
       console.error("Error changing language on backend:", error);
     }
   };
-
-  // const handleSelectChange = event => {
-  //   const selectedValue = event.target.value;
-  //   changeLanguage(selectedValue);
-  // };
 
   const handlCheckLang = val => {
     setLang(val);
@@ -57,8 +38,6 @@ const Header = ({ toggleBurgerMenu, isOpen, setScrollToUsedTents }) => {
       locale: val,
     });
     changeLanguage(val);
-
-    // closeModal && closeModal();
   };
 
   return (
@@ -77,6 +56,7 @@ const Header = ({ toggleBurgerMenu, isOpen, setScrollToUsedTents }) => {
         <Navigation
           toggleBurgerMenu={toggleBurgerMenu}
           setScrollToUsedTents={setScrollToUsedTents}
+          isMobile={isMobile}
         />
         <div className={s.languageWrapper}>
           <Image

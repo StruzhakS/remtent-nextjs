@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import s from "./FindUs.module.css";
 import { useTranslation } from "next-i18next";
 import locationImg from "@/images/point.png";
 import phoneLogo from "@/images/Phonetel.png";
-import { useMediaQuery } from "react-responsive";
 import Image from "next/image";
-// import { isMobile } from 'constants/useMediaQueries';
 
-const FindUs = () => {
-  // const mobileScreen = isMobile();
+const FindUs = ({ isMobile }) => {
   const { t } = useTranslation();
-
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-
-  const [isMobileState, setIsMobileState] = useState(false);
-
-  useEffect(() => {
-    setIsMobileState(isMobile);
-  }, [isMobile]);
 
   const handleClick = () => {
     const latitude = 48.5565792;
@@ -29,7 +18,7 @@ const FindUs = () => {
   return (
     <section className={s.section}>
       <h2 className={s.sectionTitle}>
-        {t("Find us")}: {isMobileState && <br />} <span>{t("Location")}</span>
+        {t("Find us")}: {isMobile && <br />} <span>{t("Location")}</span>
       </h2>
       <div className={s.mapContainer}>
         <iframe

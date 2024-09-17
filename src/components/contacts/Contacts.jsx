@@ -3,11 +3,8 @@ import s from "./Contacts.module.css";
 import { useTranslation } from "next-i18next";
 import locationImg from "@/images/point.png";
 import Image from "next/image";
-// import phoneLogo from '../../images/Phonetel.png';
-// import { isMobile } from 'constants/useMediaQueries';
 
 const Contacts = () => {
-  // const mobileScreen = isMobile();
   const { t } = useTranslation();
 
   const handleClick = () => {

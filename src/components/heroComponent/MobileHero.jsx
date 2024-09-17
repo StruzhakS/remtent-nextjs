@@ -1,38 +1,38 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { useTranslation } from "next-i18next";
 import s from "./HeroComponent.module.css";
 import telLogo from "@/images/Mask group.png";
-import imageUrl from "@/images/hero-image.webp";
+// import imageUrl from "@/images/hero-image.webp";
 import Image from "next/image";
 
 const MobileHero = React.memo(() => {
   const { t } = useTranslation();
 
-  const heroRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
+  // const heroRef = useRef(null);
+  // const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 } // Налаштування відсотку видимості елемента
-    );
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (entry.isIntersecting) {
+  //         setIsVisible(true);
+  //         observer.disconnect();
+  //       }
+  //     },
+  //     { threshold: 0.1 } // Налаштування відсотку видимості елемента
+  //   );
 
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
+  //   if (heroRef.current) {
+  //     observer.observe(heroRef.current);
+  //   }
 
-    return () => {
-      if (heroRef.current) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        observer.unobserve(heroRef.current);
-      }
-    };
-  }, []);
+  //   return () => {
+  //     if (heroRef.current) {
+  //       // eslint-disable-next-line react-hooks/exhaustive-deps
+  //       observer.unobserve(heroRef.current);
+  //     }
+  //   };
+  // }, []);
 
   //   useEffect(() => {
   //     if (isVisible) {
@@ -47,7 +47,7 @@ const MobileHero = React.memo(() => {
   //   }, [isVisible]);
 
   return (
-    <div className={s.imageWrapper} ref={heroRef}>
+    <div className={s.imageWrapper}>
       <div className={s.heroText}>
         <p className={s.subTitle}>{t("repair_trucks_trailers_semi_trailers_grain_trailers")}</p>
         <h1 className={s.heroTitle}>

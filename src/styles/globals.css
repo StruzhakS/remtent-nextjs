@@ -89,7 +89,16 @@ button {
   cursor: pointer;
 }
 
+@media screen and (max-width: 767px) {
+  #__next {
+    margin-top: 20px;
+  }
+}
+
 @media screen and (min-width: 768px) {
+  #__next {
+    margin-top: 10px;
+  }
   .modal {
     display: none;
     position: fixed;

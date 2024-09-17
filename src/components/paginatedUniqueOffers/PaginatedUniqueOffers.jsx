@@ -1,9 +1,7 @@
-// import { isMobile } from "constants/useMediaQueries";
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import s from "../uniqueOffers/UniqueOffers.module.css";
 import { useTranslation } from "next-i18next";
-import { useMediaQuery } from "react-responsive";
 
 const PaginatedUniqueOffers = ({
   itemsPerPage,
@@ -14,21 +12,13 @@ const PaginatedUniqueOffers = ({
   sectionRef,
   page,
   selectedCategory,
+  isMobile,
 }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
   const { t } = useTranslation();
-  // const isMobileScreen = isMobile();
   const currentItems = items?.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(items.length / itemsPerPage);
-
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-
-  const [isMobileState, setIsMobileState] = useState(false);
-
-  useEffect(() => {
-    setIsMobileState(isMobile);
-  }, [isMobile]);
 
   const handlePageClick = event => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
@@ -48,7 +38,7 @@ const PaginatedUniqueOffers = ({
       <Items
         currentItems={currentItems}
         t={t}
-        isMobileState={isMobileState}
+        isMobile={isMobile}
         handleClick={handleClick}
         sectionRef={sectionRef}
         page={page}

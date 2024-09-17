@@ -6,10 +6,8 @@ import SearchTents from "@/components/searchTents/SearchTents";
 import UsedTentsCategories from "@/components/usedTents/UsedTentsCategories";
 import { searchCategory } from "@/constants/searchCategory";
 import UsedTents from "@/components/usedTents/UsedTents";
-import { useMediaQuery } from "react-responsive";
-import { i18n } from "next-i18next";
 
-const Lots = ({ isPage }) => {
+const Lots = ({ isPage, isMobile }) => {
   const { t } = useTranslation();
   const usedTentsRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -20,14 +18,6 @@ const Lots = ({ isPage }) => {
   const handleCategorySelect = category => {
     setSelectedCategory(category);
   };
-
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-
-  const [isMobileState, setIsMobileState] = useState(false);
-
-  useEffect(() => {
-    setIsMobileState(isMobile);
-  }, [isMobile]);
 
   const handleSubmit = async search => {
     setSearchQuery(search);
@@ -77,19 +67,24 @@ const Lots = ({ isPage }) => {
         </h2>
       )}
       <SearchTents t={t} handleSubmit={handleSubmit} />
-      {isMobileState && !isPage && (
+      {isMobile && !isPage && (
         <div className={s.categoryTitle}>
           <h3 className={s.subtitle}>{t("Category")}</h3>
         </div>
       )}
       <div style={{ position: "relative" }}>
-        <UsedTentsCategories category={searchCategory} onCategorySelect={handleCategorySelect} />
+        <UsedTentsCategories
+          category={searchCategory}
+          onCategorySelect={handleCategorySelect}
+          isMobile={isMobile}
+        />
       </div>
       <UsedTents
         selectedCategory={selectedCategory}
         searchQuery={searchQuery}
         isPage={isPage}
         filteredTents={filteredTents}
+        isMobile={isMobile}
       />
     </section>
   );

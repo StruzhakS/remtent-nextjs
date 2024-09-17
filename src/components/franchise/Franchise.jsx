@@ -3,7 +3,7 @@ import s from "./Franchise.module.css";
 import { useTranslation } from "next-i18next";
 import axios from "axios";
 
-const Franchise = () => {
+const Franchise = ({ isMobile }) => {
   const { t } = useTranslation();
   const [franchiseForm, setFranchiseForm] = useState({
     name: "",

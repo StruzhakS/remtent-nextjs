@@ -1,24 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import s from "./UsedTentsCategories.module.css";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
 
 const images = require.context("../../../public/images", true);
 const cardsPerPage = 6;
 
-const UsedTentsCategories = ({ category = [], onCategorySelect }) => {
+const UsedTentsCategories = ({ category = [], onCategorySelect, isMobile }) => {
   const { t } = useTranslation();
   // eslint-disable-next-line no-unused-vars
-  const [startIndex, setStartIndex] = useState(0);
-
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-
-  const [isMobileState, setIsMobileState] = useState(false);
-
-  useEffect(() => {
-    setIsMobileState(isMobile);
-  }, [isMobile]);
+  // const [startIndex, setStartIndex] = useState(0);
+  const startIndex = 0;
 
   const handleCategoryClick = title => {
     if (onCategorySelect) {
@@ -63,7 +55,7 @@ const UsedTentsCategories = ({ category = [], onCategorySelect }) => {
   // const goToPrevCard = () => setStartIndex((prev) => Math.max(prev - cardsPerPage, 0));
   // const goToNextCard = () => setStartIndex((prev) => Math.min(prev + cardsPerPage, category.length - cardsPerPage));
 
-  return isMobileState ? (
+  return isMobile ? (
     <div className={s.paginatedOffers}>{renderCards()}</div>
   ) : (
     <div className={s.category}>

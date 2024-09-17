@@ -1,11 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import s from "./VideoTutorials.module.css";
-// import { NavLink } from "react-router-dom";
 import arrowRight from "@/images/moreVideoArrow.png";
-// import { isMobile } from "constants/useMediaQueries";
 import Video from "./Video";
 import { useTranslation } from "next-i18next";
-import { useMediaQuery } from "react-responsive";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,21 +10,13 @@ const YOU_TUBE_APIKEY = process.env.NEXT_PUBLIC_YOU_TUBE_APIKEY;
 
 // const CHANNEL_ID = process.env.REACT_APP_CHANNEL_ID;
 
-const VideoTutorials = () => {
+const VideoTutorials = ({ isMobile }) => {
   const containerRef = useRef(null);
   const [showScrollBack, setShowScrollBack] = useState(false);
   const [videos, setVideos] = useState(null);
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null);
   const { t } = useTranslation();
-
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-
-  const [isMobileState, setIsMobileState] = useState(false);
-
-  useEffect(() => {
-    setIsMobileState(isMobile);
-  }, [isMobile]);
 
   const scrollRight = () => {
     if (containerRef.current) {
@@ -49,7 +38,7 @@ const VideoTutorials = () => {
   };
 
   useEffect(() => {
-    if (!isMobileState && containerRef.current) {
+    if (!isMobile && containerRef.current) {
       const container = containerRef.current;
       container.addEventListener("mouseenter", () => {
         container.classList.add("hovered");
@@ -74,7 +63,7 @@ const VideoTutorials = () => {
         container.removeEventListener("scroll", handleScroll);
       };
     }
-  }, [isMobileState]);
+  }, [isMobile]);
 
   useEffect(() => {
     try {
@@ -95,7 +84,7 @@ const VideoTutorials = () => {
 
   return (
     <section className={s.section}>
-      {isMobileState ? (
+      {isMobile ? (
         <h1 className={s.title}>
           <span className={s.styledTitle}>{t("VideoUroki")}</span> <br /> {t("po_remonty_tenta")}
         </h1>
@@ -104,7 +93,7 @@ const VideoTutorials = () => {
           <span className={s.styledTitle}>{t("VideoUroki")}</span> {t("po_remonty_tenta")}
         </h1>
       )}
-      {isMobileState && !error && (
+      {isMobile && !error && (
         <Link href={"/video-tips"} className={s.link}>
           <Image src={arrowRight} alt="link to videotutorials" height={"auto"} width={"auto"} />
         </Link>
@@ -124,21 +113,21 @@ const VideoTutorials = () => {
         </div>
       ) : (
         <>
-          {isMobileState && (
+          {isMobile && (
             <ul className={s.videoList}>
               {videos?.map((el, idx) => (
                 <li key={idx} className={s.videoItem}>
-                  <Video el={el} />
+                  <Video isMobile={isMobile} el={el} />
                 </li>
               ))}
             </ul>
           )}
-          {!isMobileState && (
+          {!isMobile && (
             <div style={{ position: "relative" }}>
               <div className={s.container} ref={containerRef}>
                 <div className={s.cards}>
                   {videos?.map((el, idx) => (
-                    <Video key={idx} el={el} />
+                    <Video isMobile={isMobile} key={idx} el={el} />
                   ))}
                 </div>
 

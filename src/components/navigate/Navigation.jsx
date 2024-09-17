@@ -2,12 +2,10 @@ import React from "react";
 import s from "../../layout/header/Header.module.css";
 import css from "../../layout/footer/Footer.module.css";
 import Link from "next/link";
-import { isMobile } from "@/constants/useMediaQueries";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 
-const Navigation = ({ footer, toggleBurgerMenu }) => {
-  const mobile = isMobile();
+const Navigation = ({ footer, toggleBurgerMenu, isMobile }) => {
   const router = useRouter();
   const { t } = useTranslation();
 
@@ -24,7 +22,7 @@ const Navigation = ({ footer, toggleBurgerMenu }) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    if (toggleBurgerMenu && mobile) {
+    if (toggleBurgerMenu && isMobile) {
       toggleBurgerMenu();
     }
   };

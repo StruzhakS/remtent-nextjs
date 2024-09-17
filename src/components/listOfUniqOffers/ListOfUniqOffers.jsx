@@ -5,7 +5,7 @@ import noImage from "@/images/no-image.webp";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 
-const ListOfUniqOffers = ({ currentItems, isMobileState, sectionRef, page }) => {
+const ListOfUniqOffers = ({ currentItems, sectionRef, page }) => {
   const { t } = useTranslation();
   const router = useRouter();
 

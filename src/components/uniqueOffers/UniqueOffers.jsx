@@ -5,18 +5,9 @@ import ListOfUniqOffers from "@/components/listOfUniqOffers/ListOfUniqOffers";
 import PaginatedCategories from "@/components/paginatedCategories/PaginatedCategories";
 import PaginatedUniqueOffers from "@/components/paginatedUniqueOffers/PaginatedUniqueOffers";
 import { i18n, useTranslation } from "next-i18next";
-import { useMediaQuery } from "react-responsive";
 
-const UniqueOffers = ({ page }) => {
+const UniqueOffers = ({ page, isMobile }) => {
   const { t } = useTranslation();
-  // const isMobileScreen = isMobile();
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-
-  const [isMobileState, setIsMobileState] = useState(false);
-
-  useEffect(() => {
-    setIsMobileState(isMobile);
-  }, [isMobile]);
 
   const [uniqueOffers, setUniqueOffers] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -34,7 +25,7 @@ const UniqueOffers = ({ page }) => {
           ...offer,
           firstPhoto:
             offer.photos.length > 0 ? `https://remtent.com${offer.photos[0].photo}` : null,
-          startDate: offer.startDate, // Assuming the API provides startDate
+          startDate: offer.startDate,
         }));
 
         setUniqueOffers(offersWithFirstImage);
@@ -47,10 +38,6 @@ const UniqueOffers = ({ page }) => {
 
     fetchOffers();
   }, [selectedCategory]);
-  // [selectedCategory, fetchOffers, i18n.language];
-
-  // console.log("selectedCategory", selectedCategory);
-  // console.log("uniqueOffers", uniqueOffers);
 
   const handleCategorySelect = useCallback(category => {
     setSelectedCategory(category);
@@ -64,17 +51,12 @@ const UniqueOffers = ({ page }) => {
 
   return (
     <section className={s.section} ref={sectionRef}>
-      <PaginatedCategories onCategorySelect={handleCategorySelect} showArrows={!isMobileState} />
+      <PaginatedCategories onCategorySelect={handleCategorySelect} showArrows={!isMobile} />
 
       {loading ? (
         <div className={s.loader}></div>
-      ) : isMobileState ? (
-        <ListOfUniqOffers
-          currentItems={uniqueOffers}
-          t={t}
-          isMobileState={isMobileState}
-          page={page}
-        />
+      ) : isMobile ? (
+        <ListOfUniqOffers currentItems={uniqueOffers} t={t} isMobile={isMobile} page={page} />
       ) : (
         <PaginatedUniqueOffers
           itemsPerPage={page ? 12 : 3}
@@ -83,6 +65,7 @@ const UniqueOffers = ({ page }) => {
           sectionRef={sectionRef}
           handleSectionFocus={handleSectionFocus}
           page={page}
+          isMobile={isMobile}
         />
       )}
     </section>
