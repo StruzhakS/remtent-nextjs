@@ -16,6 +16,7 @@ const MobileHero = React.memo(() => {
         width={"100%"}
         height={"auto"}
         alt="hero image"
+        loading="eager"
       />
 
       <div className={s.heroTextWrapper}>
