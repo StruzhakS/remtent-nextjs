@@ -29,6 +29,8 @@ export default function HomePage(props) {
 export async function getServerSideProps(context) {
   const userAgent = context.req.headers["user-agent"] || "";
   const isMobile = /mobile/i.test(userAgent);
+  console.log("context", context);
+  console.log("Current locale:", context.locale); // Перевіряємо локаль
 
   return {
     props: {
