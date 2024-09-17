@@ -4,18 +4,14 @@ import MobileHero from "./MobileHero";
 import DesktopHero from "./DesktopHero";
 
 const HeroComponent = () => {
-  const [isClient, setIsClient] = useState(false);
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
+  const [isMobileState, setIsMobileState] = useState(false);
+
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    setIsMobileState(isMobile);
+  }, [isMobile]);
 
-  if (!isClient) {
-    return <DesktopHero />;
-  }
-
-  return isMobile ? <MobileHero /> : <DesktopHero />;
+  return isMobileState ? <MobileHero /> : <DesktopHero />;
 };
-
 export default React.memo(HeroComponent);
