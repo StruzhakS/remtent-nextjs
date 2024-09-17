@@ -65,18 +65,17 @@ const Header = ({ toggleBurgerMenu, isOpen, setScrollToUsedTents, isMobile }) =>
             width={26}
             height={24}
           />
-          <label htmlFor="languageSelect">
-            <select
-              id="languageSelect"
-              value={lang}
-              onChange={e => handlCheckLang(e.target.value)}
-              className={s.languagesSelect}
-            >
-              <option value="uk">UA</option>
-              <option value="en">EN</option>
-              <option value="ru">RU</option>
-            </select>
-          </label>
+          <label htmlFor="languageSelect"></label>
+          <select
+            id="languageSelect"
+            value={lang}
+            onChange={e => handlCheckLang(e.target.value)}
+            className={s.languagesSelect}
+          >
+            <option value="uk">UA</option>
+            <option value="en">EN</option>
+            <option value="ru">RU</option>
+          </select>
         </div>
         {/* <LanguagesButtons /> */}
         <a href="tel:+380501589860" className={s.telHeader}>
