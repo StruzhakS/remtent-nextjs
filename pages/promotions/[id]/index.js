@@ -6,7 +6,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
 export default function SinglePromotionPage(props) {
-  const { serverPath } = props;
+  const { serverPath, isMobile } = props;
   const { i18n } = useTranslation(["common"], {
     bindI18n: "languageChanged loaded",
   });
@@ -15,7 +15,7 @@ export default function SinglePromotionPage(props) {
     i18n.reloadResources(i18n.resolvedLanguage, ["common"]);
   }, [i18n]);
 
-  return <SinglePromotionTab serverPath={serverPath} />;
+  return <SinglePromotionTab serverPath={serverPath} isMobile={isMobile} />;
 }
 
 // export const getStaticProps = async ({ locale }) => {
@@ -26,20 +26,27 @@ export default function SinglePromotionPage(props) {
 // };
 
 export async function getServerSideProps(context) {
+  const userAgent = context.req.headers["user-agent"] || "";
+  const isMobile = /mobile/i.test(userAgent);
+
   return {
     props: {
       ...(await serverSideTranslations(context.locale, ["common"])),
+      isMobile,
     },
   };
 }
 
 SinglePromotionPage.getLayout = function getLayout(page) {
+  const { isMobile } = page.props.children.props;
+
   return (
     <MainLayout
       animation
       canonical={"/"}
       title={"promotions_page_title"}
       description={"promotions_page_description"}
+      isMobile={isMobile}
     >
       {page}
     </MainLayout>

@@ -7,7 +7,7 @@ import { useTranslation } from "next-i18next";
 import VideoTab from "@/tab/videoTab/VideoTab";
 
 export default function VideoPage(props) {
-  const { serverPath } = props;
+  const { serverPath, isMobile } = props;
   const { i18n } = useTranslation(["common"], {
     bindI18n: "languageChanged loaded",
   });
@@ -16,31 +16,37 @@ export default function VideoPage(props) {
     i18n.reloadResources(i18n.resolvedLanguage, ["common"]);
   }, [i18n]);
 
-  return <VideoTab serverPath={serverPath} />;
+  return <VideoTab serverPath={serverPath} isMobile={isMobile} />;
 }
 
-export const getStaticProps = async ({ locale }) => {
-  const props = await serverSideTranslations(locale, ["common"]);
-  return {
-    props,
-  };
-};
-
-// export async function getServerSideProps(context) {
+// export const getStaticProps = async ({ locale }) => {
+//   const props = await serverSideTranslations(locale, ["common"]);
 //   return {
-//     props: {
-//       ...(await serverSideTranslations(context.locale, ["common"])),
-//     },
+//     props,
 //   };
-// }
+// };
+
+export async function getServerSideProps(context) {
+  const userAgent = context.req.headers["user-agent"] || "";
+  const isMobile = /mobile/i.test(userAgent);
+  return {
+    props: {
+      ...(await serverSideTranslations(context.locale, ["common"])),
+      isMobile,
+    },
+  };
+}
 
 VideoPage.getLayout = function getLayout(page) {
+  const { isMobile } = page.props.children.props;
+
   return (
     <MainLayout
       animation
       canonical={"/"}
       title={"video_tutorials_page_title"}
       description={"video_tutorials_page_description"}
+      isMobile={isMobile}
     >
       {page}
     </MainLayout>
