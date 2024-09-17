@@ -15,12 +15,19 @@ const DesktopHero = React.memo(() => {
   return (
     <div className={s.imagesWrapper}>
       <div className={s.smallImagesWrapper}>
-        <Image src={smallImg} width={252} height={168} alt="tent repair" />
-        <Image src={smallImg_2} width={252} height={168} alt="tent repair" />
-        <Image src={smallImg_3} width={252} height={168} alt="tent repair" />
+        <Image src={smallImg} width={252} height={168} alt="tent repair" loading="eager" />
+        <Image src={smallImg_2} width={252} height={168} alt="tent repair" loading="eager" />
+        <Image src={smallImg_3} width={252} height={168} alt="tent repair" loading="eager" />
       </div>
       <div className={s.imageWrapper}>
-        <Image className={s.heroImage} src={image} width={"100%"} height={"auto"} alt="hero image" />
+        <Image
+          className={s.heroImage}
+          src={image}
+          width={"100%"}
+          height={"auto"}
+          alt="hero image"
+          loading="eager"
+        />
         <div className={s.heroTextWrapper}>
           <div className={s.heroTextDesktop}>
             <p className={s.subTitleDesktop}>

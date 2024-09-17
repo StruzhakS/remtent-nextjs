@@ -8,44 +8,6 @@ import Image from "next/image";
 const MobileHero = React.memo(() => {
   const { t } = useTranslation();
 
-  // const heroRef = useRef(null);
-  // const [isVisible, setIsVisible] = useState(false);
-
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver(
-  //     ([entry]) => {
-  //       if (entry.isIntersecting) {
-  //         setIsVisible(true);
-  //         observer.disconnect();
-  //       }
-  //     },
-  //     { threshold: 0.1 } // Налаштування відсотку видимості елемента
-  //   );
-
-  //   if (heroRef.current) {
-  //     observer.observe(heroRef.current);
-  //   }
-
-  //   return () => {
-  //     if (heroRef.current) {
-  //       // eslint-disable-next-line react-hooks/exhaustive-deps
-  //       observer.unobserve(heroRef.current);
-  //     }
-  //   };
-  // }, []);
-
-  //   useEffect(() => {
-  //     if (isVisible) {
-  //       const img = new Image();
-  //       img.src = imageUrl;
-  //       img.onload = () => {
-  //         if (heroRef.current) {
-  //           heroRef.current.style.backgroundImage = `url(${imageUrl})`;
-  //         }
-  //       };
-  //     }
-  //   }, [isVisible]);
-
   return (
     <div className={s.imageWrapper}>
       <Image
@@ -64,7 +26,7 @@ const MobileHero = React.memo(() => {
           </h1>
         </div>
         <a className={s.phoneLink} href="tel:+380501589860">
-          <Image src={telLogo} alt="phone logo" width={42} height={41} />
+          <Image src={telLogo} alt="phone logo" width={42} height={41} loading="eager" />
           +380501589860
         </a>
       </div>
