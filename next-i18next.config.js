@@ -11,7 +11,7 @@ module.exports = {
   i18n: {
     locales: ["en", "ru", "uk"],
     defaultLocale: "uk",
-    localeDetection: true,
+    // localeDetection: true,
     // objectNotation: true,
   },
   localePath:

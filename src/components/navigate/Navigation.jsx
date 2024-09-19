@@ -10,7 +10,10 @@ const Navigation = ({ footer, toggleBurgerMenu, isMobile }) => {
   const { t } = useTranslation();
 
   const isActive = path => {
-    return router.pathname === path;
+    if (path === "/") {
+      return router.pathname === "/";
+    }
+    return router.pathname.startsWith(path) && path !== "/";
   };
 
   const handleNavLinkClick = path => {

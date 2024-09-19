@@ -3,15 +3,7 @@ import React from "react";
 // import { HelmetWrapper } from "../HelmetWrapper";
 
 const SinglePromotionTab = () => {
-  return (
-    <>
-      {/* <HelmetWrapper
-        titleKey="promotions_page_title"
-        descriptionKey="promotions_page_description"
-      /> */}
-      <Promotion />
-    </>
-  );
+  return <Promotion />;
 };
 
 export default SinglePromotionTab;

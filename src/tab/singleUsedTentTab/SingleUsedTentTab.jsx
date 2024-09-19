@@ -4,7 +4,7 @@ import { useTranslation } from "next-i18next";
 import logoPhone from "@/images/Phonetel.png";
 import moment from "moment";
 import axios from "axios";
-import usedTent from "@/images/usedTent.webp";
+import noImage from "@/images/no-image.webp";
 // import { useParams, Link, useNavigate } from "react-router-dom";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -116,7 +116,7 @@ const SingleUsedTentTab = () => {
               additionalClass="custom-gallery"
             />
           ) : (
-            <Image className={s.image} src={usedTent} alt={title} width={"auto"} height={"auto"} />
+            <Image className={s.image} src={noImage} alt={title} />
           )}
         </div>
         <div className={s.descriptionWrapper}>
@@ -175,10 +175,8 @@ const SingleUsedTentTab = () => {
               <div className={s.relatedAdsBox}>
                 <Image
                   className={s.relatedImage}
-                  src={el.photos.length ? `https://remtent.com${el?.photos[0]?.photo}` : usedTent}
+                  src={el.photos.length ? `https://remtent.com${el?.photos[0]?.photo}` : noImage}
                   alt={el?.title}
-                  width={"auto"}
-                  height={"auto"}
                 />
               </div>
               <h3 className={s.relatedAdsTitle}>{el?.title}</h3>

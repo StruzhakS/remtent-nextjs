@@ -44,12 +44,12 @@ body {
   overflow: hidden;
 }
 
-#root {
+/* #root {
   min-height: 100%;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
-}
+} */
 
 button {
   cursor: pointer;
@@ -90,6 +90,10 @@ button {
 @media screen and (max-width: 767px) {
   #__next {
     margin-top: 20px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
   }
 }
 
@@ -127,4 +131,29 @@ button {
   #__next {
     padding-top: 0px;
   }
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(montserrat/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw9aXpsog.woff2) format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(montserrat/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu173w9aXpsog.woff2) format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(montserrat/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM73w9aXpsog.woff2) format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }

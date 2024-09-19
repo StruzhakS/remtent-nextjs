@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 import { format } from "date-fns";
 import s from "./UsedTents.module.css";
-import usedTent from "@/images/usedTent.webp";
 import PaginatedUniqueOffers from "@/components/paginatedUniqueOffers/PaginatedUniqueOffers";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import noImage from "@/images/no-image.webp";
 
 export function TentsByUser({ currentItems, handleClick, sectionRef, isPage }) {
   const { t } = useTranslation();
@@ -24,14 +24,14 @@ export function TentsByUser({ currentItems, handleClick, sectionRef, isPage }) {
             key={el.id}
             onClick={() => handleClick(el.id)}
           >
-            <picture>
-              <Image
-                className={s.usedTentImage}
-                src={el.photos.length > 0 ? `https://remtent.com${el.photos[0].photo}` : usedTent}
-                alt={el.title}
-                priority
-              />
-            </picture>
+            {/* <picture> */}
+            <Image
+              className={s.usedTentImage}
+              src={el.photos.length > 0 ? `https://remtent.com${el.photos[0].photo}` : noImage}
+              alt={el.title}
+              priority
+            />
+            {/* </picture> */}
             <p className={s.tentTitle}>{el.title}</p>
             <p className={s.tentPrice}>{el.price} грн</p>
             <p className={s.tentLocation}>{el.location}</p>

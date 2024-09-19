@@ -38,7 +38,8 @@
 
 .usedTentImage {
   width: 100%;
-  height: 210px;
+  height: auto;
+  /* height: 210px; */
   object-fit: cover;
   margin-bottom: 16px;
 }
@@ -118,7 +119,8 @@
 
   .usedTentImage {
     width: 100%;
-    height: 210px;
+    height: auto;
+    /* height: 210px; */
     object-fit: cover;
   }
 }

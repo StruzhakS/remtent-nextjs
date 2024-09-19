@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import s from "./RelatedItems.module.css";
 import { useTranslation } from "next-i18next";
 // import { useNavigate } from 'react-router-dom';
-import usedTent from "@/images/usedTent.webp";
+import noImage from "@/images/no-image.webp";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
@@ -71,7 +71,7 @@ const RelatedItems = ({ items, title, url }) => {
           const photoUrl =
             item.photos && item.photos.length > 0
               ? `https://remtent.com/${item.photos[0].photo}`
-              : usedTent;
+              : noImage;
 
           return (
             <li

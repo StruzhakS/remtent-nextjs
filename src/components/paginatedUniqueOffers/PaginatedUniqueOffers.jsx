@@ -43,7 +43,7 @@ const PaginatedUniqueOffers = ({
         sectionRef={sectionRef}
         page={page}
       />
-      <ul style={{ position: "relative" }}>
+      <div style={{ position: "relative" }}>
         <ReactPaginate
           breakLabel="..."
           nextLabel="&rarr;"
@@ -57,7 +57,7 @@ const PaginatedUniqueOffers = ({
           activeClassName={s.activePage}
           pageLinkClassName={s.breakLinkClassName}
         />
-      </ul>
+      </div>
     </>
   );
 };

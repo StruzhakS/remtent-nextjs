@@ -12,7 +12,7 @@ const MainHead = props => {
       <title>{t(title)}</title>
       <meta name="description" content={t(description)} />
       {noindex && <meta name="robots" content="noindex, nofollow" />}
-      <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+      <link rel="shortcut icon" href="/public/favicon/favicon.ico" type="image/x-icon" />
       {canonical && <link rel="canonical" href={`${host}${canonical}`}></link>}
     </Head>
   );
