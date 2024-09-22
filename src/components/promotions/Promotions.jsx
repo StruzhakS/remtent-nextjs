@@ -83,9 +83,15 @@ const Promotion = () => {
       <div className={s.promotionInfo}>
         <div className={s.imageWrapper}>
           {promotion.photos.length > 0 ? (
-            <ImageGallery items={images} showFullscreenButton={true} showPlayButton={false} />
+            <ImageGallery
+              items={images}
+              showFullscreenButton={true}
+              showPlayButton={false}
+              width={200}
+              height={200}
+            />
           ) : (
-            <Image src={latka} className={s.defaulImage} alt="latka" />
+            <Image src={latka} className={s.defaulImage} alt="latka" width={200} height={200} />
           )}
         </div>
         <div className={s.descriptionWrapper}>

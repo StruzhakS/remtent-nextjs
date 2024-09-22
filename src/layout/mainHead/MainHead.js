@@ -16,7 +16,7 @@ const MainHead = props => {
 
       {noindex && <meta name="robots" content="noindex, nofollow" />}
       {/* <link rel="icon" href="/SS_icon.svg" /> */}
-      {/* <link rel="icon" href="/favicon.ico" type="image/x-icon" /> */}
+      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       {canonical && <link rel="canonical" href={`${host}${canonical}`}></link>}
     </Head>
   );

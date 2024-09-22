@@ -14,6 +14,7 @@ export function TentsByUser({ currentItems, handleClick, sectionRef, isPage }) {
     const date = new Date(dateString);
     return format(date, "dd.MM.yyyy HH:mm");
   };
+  console.log(currentItems);
 
   return (
     <div className={s.tentsSection}>
@@ -24,14 +25,16 @@ export function TentsByUser({ currentItems, handleClick, sectionRef, isPage }) {
             key={el.id}
             onClick={() => handleClick(el.id)}
           >
-            {/* <picture> */}
-            <Image
-              className={s.usedTentImage}
-              src={el.photos.length > 0 ? `https://remtent.com${el.photos[0].photo}` : noImage}
-              alt={el.title}
-              priority
-            />
-            {/* </picture> */}
+            <picture>
+              <Image
+                className={s.usedTentImage}
+                src={el.photos.length > 0 ? `https://remtent.com${el.photos[0].photo}` : noImage}
+                alt={el.title}
+                priority
+                height={200}
+                width={200}
+              />
+            </picture>
             <p className={s.tentTitle}>{el.title}</p>
             <p className={s.tentPrice}>{el.price} грн</p>
             <p className={s.tentLocation}>{el.location}</p>

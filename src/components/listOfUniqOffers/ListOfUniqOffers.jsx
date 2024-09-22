@@ -13,6 +13,8 @@ const ListOfUniqOffers = ({ currentItems, sectionRef, page }) => {
     router.push(`/promotions/${el.id}`);
   };
 
+  console.log(currentItems);
+
   return (
     <ul className={page ? s.offersListPage : s.offersList} ref={sectionRef}>
       {currentItems.map(el => (
@@ -24,8 +26,8 @@ const ListOfUniqOffers = ({ currentItems, sectionRef, page }) => {
           <div className={s.imageWrapper}>
             <Image
               className={s.offerImage}
-              width={"auto"}
-              height={"auto"}
+              width={200}
+              height={200}
               src={
                 el.photos && el.photos.length > 0
                   ? `https://remtent.com${el.photos[0].photo}`

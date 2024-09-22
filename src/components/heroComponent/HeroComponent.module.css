@@ -30,6 +30,12 @@
 .heroTextWrapper {
   position: absolute;
   top: 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
+  justify-content: space-between;
 }
 
 .heroTitle {
@@ -83,6 +89,7 @@
   letter-spacing: 0.01em;
   text-align: center;
   color: rgba(2, 129, 94, 1);
+  font-weight: bold;
 }
 
 .heroTitleDesktop {
@@ -125,5 +132,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+
+@media screen and (min-width: 931px) {
+  .heroTextWrapper {
+    display: block;
+    height: none;
   }
 }

@@ -4,9 +4,16 @@ module.exports = {
   reactStrictMode: false,
   i18n,
   images: {
+    // domains: ["remtent.com"],
     // dangerouslyAllowSVG: true,
     // domains: ["i.ytimg.com"],
     remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "remtent.com",
+        port: "",
+        pathname: "/**",
+      },
       {
         protocol: "https",
         hostname: "i.ytimg.com",

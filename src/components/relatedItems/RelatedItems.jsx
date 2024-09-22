@@ -83,7 +83,13 @@ const RelatedItems = ({ items, title, url }) => {
               }}
             >
               <div className={s.imageWrapper}>
-                <Image className={s.promImage} src={photoUrl} alt={item.title} />
+                <Image
+                  className={s.promImage}
+                  src={photoUrl}
+                  alt={item.title}
+                  width={200}
+                  height={200}
+                />
               </div>
               <h2 className={s.promTitle}>{item.title}</h2>
               <p className={s.promDescription}>{item.short_description}</p>
