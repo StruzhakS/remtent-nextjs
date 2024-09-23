@@ -24,7 +24,7 @@ const Franchise = ({ isMobile }) => {
     e.preventDefault();
     try {
       const response = await axios.post("http://remtent.com/api/franchise-request/", franchiseForm);
-      console.log("Дані відправлено", response.data);
+      // console.log("Дані відправлено", response.data);
       setMessage(t("successMessage"));
       setMessageClass(s.successMessage);
     } catch (error) {

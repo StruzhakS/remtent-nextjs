@@ -13,8 +13,6 @@ const ListOfUniqOffers = ({ currentItems, sectionRef, page }) => {
     router.push(`/promotions/${el.id}`);
   };
 
-  console.log(currentItems);
-
   return (
     <ul className={page ? s.offersListPage : s.offersList} ref={sectionRef}>
       {currentItems.map(el => (

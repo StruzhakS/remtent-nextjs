@@ -53,6 +53,10 @@ const Promotion = () => {
     e.preventDefault();
 
     try {
+      const response = await axios.post("http://remtent.com/api/order-request/", {
+        ...clientInfo,
+        promotion_id: id,
+      });
       setStatusMessage(t("Спасибо за ваш заказ, ожидайте нашего звонка!"));
       setUserInfo({ name: "", phone: "" });
     } catch (error) {

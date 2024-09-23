@@ -14,7 +14,6 @@ export function TentsByUser({ currentItems, handleClick, sectionRef, isPage }) {
     const date = new Date(dateString);
     return format(date, "dd.MM.yyyy HH:mm");
   };
-  console.log(currentItems);
 
   return (
     <div className={s.tentsSection}>

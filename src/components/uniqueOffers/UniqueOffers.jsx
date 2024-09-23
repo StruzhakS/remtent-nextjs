@@ -12,7 +12,6 @@ const UniqueOffers = ({ page, isMobile }) => {
   const [uniqueOffers, setUniqueOffers] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [loading, setLoading] = useState(false);
-  console.log(uniqueOffers);
 
   useEffect(() => {
     const fetchOffers = async () => {
@@ -28,7 +27,6 @@ const UniqueOffers = ({ page, isMobile }) => {
             offer.photos.length > 0 ? `https://remtent.com${offer.photos[0].photo}` : null,
           startDate: offer.startDate,
         }));
-        console.log(offersWithFirstImage);
 
         setUniqueOffers(offersWithFirstImage);
       } catch (error) {
