@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 const Promotion = () => {
   const { t } = useTranslation();
   const router = useRouter();
+  const { locale } = useRouter();
   const { id } = router.query;
   const [promotion, setPromotion] = useState(null);
   const [error, setError] = useState(null);
@@ -79,10 +80,35 @@ const Promotion = () => {
     description: photo.caption || t("Promotion Image"),
   }));
 
+  console.log(promotion);
+
+  const {
+    title,
+    title_en,
+    title_ru,
+    details,
+    details_en,
+    details_ru,
+    main_description,
+    main_description_en,
+    main_description_ru,
+    discount_percentage,
+  } = promotion;
+
+  const descriptionPromotion =
+    locale === "en"
+      ? main_description_en
+      : locale === "ru"
+      ? main_description_ru
+      : main_description;
+
+  const detailsDescription = locale === "en" ? details_en : locale === "ru" ? details_ru : details;
+  const titlePromotion = locale === "en" ? title_en : locale === "ru" ? title_ru : title;
+
   return (
     <div className={s.promotionsPage}>
       <h2 className={s.title}>
-        {t("Promotion")} <span>{promotion.title}</span>
+        {t("Promotion")} <span>{titlePromotion}</span>
       </h2>
       <div className={s.promotionInfo}>
         <div className={s.imageWrapper}>
@@ -100,15 +126,15 @@ const Promotion = () => {
         </div>
         <div className={s.descriptionWrapper}>
           <h3 className={s.titleDescription}>{t("description promotion")}</h3>
-          <p className={s.description}>{promotion.main_description}</p>
+          <p className={s.description}>{descriptionPromotion}</p>
           <h3 className={s.titleDescription}>{t("Details of promotion")}</h3>
-          <p className={s.description}>{promotion.details}</p>
+          <p className={s.description}>{detailsDescription}</p>
           <div className={s.promotionWrapper}>
             <p className={s.price}>
               {t("Cost")} <span>{promotion.price}&nbsp;грн</span>
             </p>
             <p className={s.promotion}>
-              {t("Your savings")} до <span>{promotion.discount_percentage}%</span>
+              {t("Your savings")} до <span>{discount_percentage}%</span>
             </p>
           </div>
         </div>

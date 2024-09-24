@@ -16,6 +16,7 @@ import Link from "next/link";
 const SingleUsedTentTab = () => {
   const { t } = useTranslation();
   const router = useRouter();
+  const { locale } = useRouter();
   const { id } = router.query;
   const [tent, setTent] = useState(null);
   const [relatedAds, setRelatedAds] = useState([]);
@@ -70,8 +71,27 @@ const SingleUsedTentTab = () => {
     phone_number,
     price,
     photos,
+    description_en,
+    description_ru,
+    first_name_en,
+    first_name_ru,
+    last_name_en,
+    last_name_ru,
+    location_en,
+    location_ru,
+    title_en,
+    title_ru,
   } = tent;
   const formattedDate = moment(created_at).format("DD MMMM YYYY г.");
+
+  const titleTent = locale === "en" ? title_en : locale === "ru" ? title_ru : title;
+  const descriptionTent =
+    locale === "en" ? description_en : locale === "ru" ? description_ru : description;
+
+  const firstName = locale === "en" ? first_name_en : locale === "ru" ? first_name_ru : first_name;
+  const lastName = locale === "en" ? last_name_en : locale === "ru" ? last_name_ru : last_name;
+
+  const locationOfTent = locale === "en" ? location_en : locale === "ru" ? location_ru : location;
 
   const images = photos.map(photo => ({
     original: `https://remtent.com${photo.photo}`,
@@ -120,13 +140,13 @@ const SingleUsedTentTab = () => {
           )}
         </div>
         <div className={s.descriptionWrapper}>
-          <h3 className={s.descTitle}>{title}</h3>
-          <p className={s.description}>{description}</p>
+          <h3 className={s.descTitle}>{titleTent}</h3>
+          <p className={s.description}>{descriptionTent}</p>
         </div>
         <div className={s.ownerWrapper}>
           <p className={s.price}>{price} грн</p>
           <p className={s.owner}>
-            {first_name} {last_name}
+            {firstName} {lastName}
           </p>
           <p className={s.tell}>{phone_number}</p>
           <a href={`tel:${phone_number}`} className={s.callBtn}>
@@ -134,7 +154,7 @@ const SingleUsedTentTab = () => {
             {t("Call")}
           </a>
           <div>
-            <p className={s.location}>{location}</p>
+            <p className={s.location}>{locationOfTent}</p>
             <p className={s.createdAt}>{formattedDate}</p>
           </div>
         </div>
@@ -162,35 +182,44 @@ const SingleUsedTentTab = () => {
           </div>
         </div>
         <ul className={s.relatedAdsList} ref={scrollContainerRef}>
-          {relatedAds?.map(el => (
-            <li
-              className={s.relatedAdsItem}
-              key={el?.id}
-              onClick={() => {
-                navigateToAction(el);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-            >
-              {/* <Link to={`/announcement/${el?.id}`}> */}
-              <div className={s.relatedAdsBox}>
-                <Image
-                  className={s.relatedImage}
-                  src={el.photos.length ? `https://remtent.com${el?.photos[0]?.photo}` : noImage}
-                  alt={el?.title}
-                />
-              </div>
-              <h3 className={s.relatedAdsTitle}>{el?.title}</h3>
+          {relatedAds?.map(el => {
+            const { title, location, location_en, location_ru, title_en, title_ru } = el;
 
-              <div className={s.priceWrapper}>
-                <p className={s.relatedAdsPrice}>{el?.price} грн</p>
-                <p className={s.relatedAdsLocation}>{el?.location}</p>
-                <p className={s.relatedAdsDate}>
-                  {moment(el?.created_at).format("DD MMMM YYYY г.")}
-                </p>
-              </div>
-              {/* </Link> */}
-            </li>
-          ))}
+            const titleTent = locale === "en" ? title_en : locale === "ru" ? title_ru : title;
+
+            const locationOfTent =
+              locale === "en" ? location_en : locale === "ru" ? location_ru : location;
+
+            return (
+              <li
+                className={s.relatedAdsItem}
+                key={el?.id}
+                onClick={() => {
+                  navigateToAction(el);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
+                <div className={s.relatedAdsBox}>
+                  <Image
+                    className={s.relatedImage}
+                    src={el.photos.length ? `https://remtent.com${el?.photos[0]?.photo}` : noImage}
+                    alt={el?.title}
+                    width={200}
+                    height={200}
+                  />
+                </div>
+                <h3 className={s.relatedAdsTitle}>{titleTent}</h3>
+
+                <div className={s.priceWrapper}>
+                  <p className={s.relatedAdsPrice}>{el?.price} грн</p>
+                  <p className={s.relatedAdsLocation}>{locationOfTent}</p>
+                  <p className={s.relatedAdsDate}>
+                    {moment(el?.created_at).format("DD MMMM YYYY г.")}
+                  </p>
+                </div>
+              </li>
+            );
+          })}
         </ul>
         <div style={{ marginLeft: "auto", marginTop: "8px" }}>
           <Link href={"/used-tents"} className={s.link}>

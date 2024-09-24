@@ -9,7 +9,7 @@ import Image from "next/image";
 const RelatedItems = ({ items, title, url }) => {
   const { t } = useTranslation();
   const router = useRouter();
-
+  const { locale } = useRouter();
   const navigateToPage = url => {
     router.push(url);
   };
@@ -73,6 +73,25 @@ const RelatedItems = ({ items, title, url }) => {
               ? `https://remtent.com/${item.photos[0].photo}`
               : noImage;
 
+          const {
+            title,
+            title_en,
+            title_ru,
+            price,
+            short_description,
+            short_description_en,
+            short_description_ru,
+            discount_percentage,
+          } = item;
+
+          const relatedTitle = locale === "en" ? title_en : locale === "ru" ? title_ru : title;
+          const relatedShortDescription =
+            locale === "en"
+              ? short_description_en
+              : locale === "ru"
+              ? short_description_ru
+              : short_description;
+
           return (
             <li
               key={index}
@@ -91,14 +110,14 @@ const RelatedItems = ({ items, title, url }) => {
                   height={200}
                 />
               </div>
-              <h2 className={s.promTitle}>{item.title}</h2>
-              <p className={s.promDescription}>{item.short_description}</p>
+              <h2 className={s.promTitle}>{relatedTitle}</h2>
+              <p className={s.promDescription}>{relatedShortDescription}</p>
               <div className={s.promotionWrapper}>
                 <p className={s.price}>
-                  {t("Cost")} <span>{item.price}&nbsp;грн</span>
+                  {t("Cost")} <span>{price}&nbsp;грн</span>
                 </p>
                 <p className={s.promotion}>
-                  {t("Your savings")} до <span>{item.discount_percentage}%</span>
+                  {t("Your savings")} до <span>{discount_percentage}%</span>
                 </p>
               </div>
             </li>
