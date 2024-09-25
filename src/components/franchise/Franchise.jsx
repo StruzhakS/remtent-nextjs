@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import s from "./Franchise.module.css";
 import { useTranslation } from "next-i18next";
 import axios from "axios";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const Franchise = ({ isMobile }) => {
   const { t } = useTranslation();
@@ -19,6 +21,8 @@ const Franchise = ({ isMobile }) => {
       return { ...prev, [name]: value };
     });
   };
+
+  // console.log(franchiseForm);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -56,7 +60,7 @@ const Franchise = ({ isMobile }) => {
         </label>
         <label htmlFor="phone">
           {t("Phone")}
-          <input
+          {/* <input
             className={s.franchiseInput}
             type="tel"
             name="phone"
@@ -65,6 +69,52 @@ const Franchise = ({ isMobile }) => {
             value={franchiseForm.phone}
             required
             placeholder={"0501589860"}
+          /> */}
+          <PhoneInput
+            country={"ua"}
+            value={franchiseForm.phone}
+            onChange={value =>
+              setFranchiseForm(prev => {
+                return { ...prev, phone: value };
+              })
+            }
+            placeholder="0501589860"
+            regions={"europe"}
+            specialLabel={`${t("Phone")}`}
+            inputProps={{
+              name: "phone",
+              required: true,
+              autoFocus: true,
+            }}
+            enableSearch={true}
+            countryCodeEditable={false}
+            // containerClass={`${s.franchisePhoneContainer}`}
+            // inputClass={`${s.franchiseinputClass}`}
+            buttonClass={`${s.franchiseDropButton}`}
+            dropdownClass={`${s.franchiseDropDown}`}
+            // searchClass={`${s.franchiseSearch}`}
+            inputStyle={{
+              position: "relative",
+              fontSize: isMobile ? "18px" : " 30px",
+              letterSpacing: "0.01rem",
+              marginTop: " 0 !important",
+              marginBottom: " 0 !important",
+              paddingLeft: isMobile ? "48px" : "78px",
+              marginLeft: "0",
+              backgroundColor: "#FFFFFF",
+              border: "1px solid #CACACA",
+              borderRadius: "20px",
+              lineheight: "25px",
+              height: isMobile ? "50px" : "100px",
+              width: "100%",
+              outline: "none",
+            }}
+            dropdownStyle={{
+              left: isMobile ? "0" : " ",
+              width: isMobile ? "220px" : "300px",
+              fontSize: isMobile ? "12px" : "14px",
+              lineHeight: "1.2",
+            }}
           />
         </label>
         <label htmlFor="email">

@@ -31,12 +31,10 @@
   margin-top: 35px;
 }
 
-
 .successMessage {
   color: green;
   display: flex;
   justify-content: center;
-
 }
 
 .errorMessage {
@@ -44,7 +42,6 @@
   display: flex;
   justify-content: center;
 }
-
 
 .franchiseForm {
   display: flex;
@@ -110,13 +107,31 @@
   background: rgba(241, 117, 86, 1);
 }
 
-.franchiseForm button:hover{
+.franchiseForm button:hover {
   color: #b7b6b6;
   background: rgb(204, 89, 60);
-  transition: all .150s linear;
+  transition: all 0.15s linear;
+}
+
+.franchiseDropDown {
+  color: black;
+}
+
+.franchiseDropButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
 }
 
 @media (max-width: 768px) {
+  .franchiseDropButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+  }
+
   .title {
     font-size: 50px;
     line-height: 60px;
@@ -142,7 +157,7 @@
   }
 
   .franchiseForm .franchiseInput {
-    height: 60px;
+    height: 50px;
     font-size: 20px;
     padding: 20px 15px;
   }
