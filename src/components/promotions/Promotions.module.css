@@ -169,6 +169,13 @@
   width: 100%;
   height: auto;
 }
+.phoneContainer input {
+  min-width: 100%;
+}
+
+.searchClassPhone {
+  max-height: 20px;
+}
 @media screen and (min-width: 768px) {
   .link {
     font-size: 20px;

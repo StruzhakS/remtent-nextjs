@@ -11,6 +11,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+
 const Promotion = () => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -21,6 +24,26 @@ const Promotion = () => {
   const [clientInfo, setUserInfo] = useState({ name: "", phone: "" });
   const [statusMessage, setStatusMessage] = useState("");
   const [promotions, setPromotions] = useState(null);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Функція для перевірки розміру екрану
+    function handleResize() {
+      setIsMobile(window.innerWidth <= 768); // Менше або дорівнює 768px - це мобільна версія
+    }
+
+    // Додаємо слухач події 'resize'
+    window.addEventListener("resize", handleResize);
+
+    // Викликаємо функцію для встановлення початкового стану
+    handleResize();
+
+    // Очищаємо слухач подій під час розмонтаження компонента
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // console.log(isMobile);
 
   useEffect(() => {
     const getAllPromotions = () => {
@@ -79,8 +102,6 @@ const Promotion = () => {
     thumbnail: `https://remtent.com${photo.photo}`,
     description: photo.caption || t("Promotion Image"),
   }));
-
-  console.log(promotion);
 
   const {
     title,
@@ -148,12 +169,44 @@ const Promotion = () => {
           name="name"
           placeholder={t("inputName")}
         />
-        <input
+        {/* <input
           onChange={handleChange}
           value={clientInfo.phone}
           type="tel"
           name="phone"
           placeholder={t("inputPhone")}
+        /> */}
+        <PhoneInput
+          country={"ua"}
+          value={clientInfo.phone}
+          onChange={value =>
+            setUserInfo(prev => {
+              return { ...prev, phone: value };
+            })
+          }
+          placeholder="0501589860"
+          regions={"europe"}
+          specialLabel={`${t("Phone")}`}
+          inputProps={{
+            name: "phone",
+            required: true,
+            autoFocus: true,
+          }}
+          enableSearch={true}
+          countryCodeEditable={false}
+          containerClass={s.phoneContainer}
+          searchClass={s.searchClassPhone}
+          inputStyle={{
+            width: "100%",
+            height: isMobile ? "20px" : "74px",
+            borderRadius: "10px",
+            fontSize: "20px",
+            border: "1px solid rgba(38, 38, 38, 0.5)",
+          }}
+          searchStyle={{
+            height: "20px",
+            border: "1px solid rgba(38, 38, 38, 0.5)",
+          }}
         />
         <button>{t("Order")}</button>
       </form>
