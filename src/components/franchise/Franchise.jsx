@@ -84,7 +84,7 @@ const Franchise = ({ isMobile }) => {
             inputProps={{
               name: "phone",
               required: true,
-              autoFocus: true,
+              // autoFocus: true,
             }}
             enableSearch={true}
             countryCodeEditable={false}

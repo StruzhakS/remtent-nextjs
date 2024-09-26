@@ -169,7 +169,7 @@
 
 .relatedImage {
   width: 100%;
-  height: 100%;
+  height: 150px;
 }
 
 .relatedAdsBox {
@@ -318,6 +318,11 @@
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     padding: 4px;
+  }
+
+  .relatedImage {
+    width: 100%;
+    height: 200px;
   }
 
   .relatedAdsList::-webkit-scrollbar {
