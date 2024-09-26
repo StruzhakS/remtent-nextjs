@@ -29,7 +29,7 @@ const HomeTab = ({ isMobile }) => {
       },
       {
         rootMargin: "0px",
-        threshold: 0.1, // Load when 10% of the component is visible
+        threshold: 0.5, // Load when 10% of the component is visible
       }
     );
 
@@ -71,10 +71,9 @@ const HomeTab = ({ isMobile }) => {
       {isFindUsVisible && (
         <Suspense fallback={<div>Loading FindUs...</div>}>
           <FindUs isMobile={isMobile} />
+          <Franchise isMobile={isMobile} />
         </Suspense>
       )}
-
-      <Franchise isMobile={isMobile} />
     </>
   );
 };
