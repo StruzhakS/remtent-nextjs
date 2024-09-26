@@ -28,6 +28,8 @@ const SingleUsedTentTab = () => {
     router.push(`/used-tents/${el?.id}`);
   };
 
+  // console.log(tent);
+
   const itemsPerPage = 4;
   const totalItems = relatedAds.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -72,26 +74,59 @@ const SingleUsedTentTab = () => {
     price,
     photos,
     description_en,
+    description_uk,
     description_ru,
     first_name_en,
+    first_name_uk,
     first_name_ru,
     last_name_en,
+    last_name_uk,
     last_name_ru,
     location_en,
     location_ru,
+    location_uk,
     title_en,
     title_ru,
+    title_uk,
   } = tent;
   const formattedDate = moment(created_at).format("DD MMMM YYYY г.");
 
-  const titleTent = locale === "en" ? title_en : locale === "ru" ? title_ru : title;
+  const titleTent =
+    locale === "en" ? title_en : locale === "ru" ? title_ru : locale === "uk" ? title_uk : title;
   const descriptionTent =
-    locale === "en" ? description_en : locale === "ru" ? description_ru : description;
+    locale === "en"
+      ? description_en
+      : locale === "ru"
+      ? description_ru
+      : locale === "uk"
+      ? description_uk
+      : description;
 
-  const firstName = locale === "en" ? first_name_en : locale === "ru" ? first_name_ru : first_name;
-  const lastName = locale === "en" ? last_name_en : locale === "ru" ? last_name_ru : last_name;
+  const firstName =
+    locale === "en"
+      ? first_name_en
+      : locale === "ru"
+      ? first_name_ru
+      : locale === "uk"
+      ? first_name_uk
+      : first_name;
+  const lastName =
+    locale === "en"
+      ? last_name_en
+      : locale === "ru"
+      ? last_name_ru
+      : locale === "uk"
+      ? last_name_uk
+      : last_name;
 
-  const locationOfTent = locale === "en" ? location_en : locale === "ru" ? location_ru : location;
+  const locationOfTent =
+    locale === "en"
+      ? location_en
+      : locale === "ru"
+      ? location_ru
+      : locale === "uk"
+      ? location_uk
+      : location;
 
   const images = photos.map(photo => ({
     original: `https://remtent.com${photo.photo}`,
@@ -183,12 +218,34 @@ const SingleUsedTentTab = () => {
         </div>
         <ul className={s.relatedAdsList} ref={scrollContainerRef}>
           {relatedAds?.map(el => {
-            const { title, location, location_en, location_ru, title_en, title_ru } = el;
+            const {
+              title,
+              location,
+              location_uk,
+              location_en,
+              location_ru,
+              title_en,
+              title_ru,
+              title_uk,
+            } = el;
 
-            const titleTent = locale === "en" ? title_en : locale === "ru" ? title_ru : title;
+            const titleTent =
+              locale === "en"
+                ? title_en
+                : locale === "ru"
+                ? title_ru
+                : locale === "uk"
+                ? title_uk
+                : title;
 
             const locationOfTent =
-              locale === "en" ? location_en : locale === "ru" ? location_ru : location;
+              locale === "en"
+                ? location_en
+                : locale === "ru"
+                ? location_ru
+                : locale === "uk"
+                ? location_uk
+                : location;
 
             return (
               <li

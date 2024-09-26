@@ -77,19 +77,31 @@ const RelatedItems = ({ items, title, url }) => {
             title,
             title_en,
             title_ru,
+            title_uk,
             price,
             short_description,
             short_description_en,
             short_description_ru,
+            short_description_uk,
             discount_percentage,
           } = item;
 
-          const relatedTitle = locale === "en" ? title_en : locale === "ru" ? title_ru : title;
+          const relatedTitle =
+            locale === "en"
+              ? title_en
+              : locale === "ru"
+              ? title_ru
+              : locale === "uk"
+              ? title_uk
+              : title;
+
           const relatedShortDescription =
             locale === "en"
               ? short_description_en
               : locale === "ru"
               ? short_description_ru
+              : locale === "uk"
+              ? short_description_uk
               : short_description;
 
           return (

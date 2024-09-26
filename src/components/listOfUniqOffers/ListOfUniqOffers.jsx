@@ -18,20 +18,32 @@ const ListOfUniqOffers = ({ currentItems, sectionRef, page }) => {
       {currentItems.map(el => {
         const {
           title,
+          title_uk,
           title_en,
           title_ru,
+          short_description_uk,
+
           short_description_en,
           short_description_ru,
           short_description,
         } = el;
 
-        const titleTent = locale === "en" ? title_en : locale === "ru" ? title_ru : title;
+        const titleTent =
+          locale === "en"
+            ? title_en
+            : locale === "ru"
+            ? title_ru
+            : locale === "uk"
+            ? title_uk
+            : title;
 
         const shortDescription =
           locale === "en"
             ? short_description_en
             : locale === "ru"
             ? short_description_ru
+            : locale === "uk"
+            ? short_description_uk
             : short_description;
         return (
           <li

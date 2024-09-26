@@ -27,6 +27,8 @@ const Promotion = () => {
 
   const [isMobile, setIsMobile] = useState(false);
 
+  // console.log(promotion);
+
   useEffect(() => {
     // Функція для перевірки розміру екрану
     function handleResize() {
@@ -107,12 +109,15 @@ const Promotion = () => {
     title,
     title_en,
     title_ru,
+    title_uk,
     details,
     details_en,
     details_ru,
+    details_uk,
     main_description,
     main_description_en,
     main_description_ru,
+    main_description_uk,
     discount_percentage,
   } = promotion;
 
@@ -121,10 +126,20 @@ const Promotion = () => {
       ? main_description_en
       : locale === "ru"
       ? main_description_ru
+      : locale === "uk"
+      ? main_description_uk
       : main_description;
 
-  const detailsDescription = locale === "en" ? details_en : locale === "ru" ? details_ru : details;
-  const titlePromotion = locale === "en" ? title_en : locale === "ru" ? title_ru : title;
+  const detailsDescription =
+    locale === "en"
+      ? details_en
+      : locale === "ru"
+      ? details_ru
+      : locale === "uk"
+      ? details_uk
+      : details;
+  const titlePromotion =
+    locale === "en" ? title_en : locale === "ru" ? title_ru : locale === "uk" ? title_uk : title;
 
   return (
     <div className={s.promotionsPage}>
@@ -190,7 +205,7 @@ const Promotion = () => {
           inputProps={{
             name: "phone",
             required: true,
-            autoFocus: true,
+            // autoFocus: true,
           }}
           enableSearch={true}
           countryCodeEditable={false}
