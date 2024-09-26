@@ -15,6 +15,8 @@ export function TentsByUser({ currentItems, handleClick, sectionRef, isPage }) {
     return format(date, "dd.MM.yyyy HH:mm");
   };
 
+  console.log(currentItems);
+
   return (
     <div className={s.tentsSection}>
       <ul className={`${isPage ? s.usedTentOnPage : s.usedTentList}`} ref={sectionRef}>
