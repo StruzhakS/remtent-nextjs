@@ -26,9 +26,7 @@ const Promotion = () => {
   const [promotions, setPromotions] = useState(null);
 
   const [isMobile, setIsMobile] = useState(false);
-
-  // console.log(promotion);
-
+  
   useEffect(() => {
     // Функція для перевірки розміру екрану
     function handleResize() {
@@ -45,7 +43,6 @@ const Promotion = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // console.log(isMobile);
 
   useEffect(() => {
     const getAllPromotions = () => {
@@ -77,6 +74,10 @@ const Promotion = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    if (!clientInfo.name || clientInfo.phone.length < 12) {
+      return setStatusMessage(t("Please fill in all required fields"));
+    }
+    
 
     try {
       const response = await axios.post("http://remtent.com/api/order-request/", {
@@ -175,22 +176,17 @@ const Promotion = () => {
           </div>
         </div>
       </div>
-      <form className={s.promotionForm} onSubmit={handleSubmit}>
+      <form className={s.promotionForm} onSubmit={handleSubmit} >
         <p>{t("order a product")}</p>
         <input
           onChange={handleChange}
           value={clientInfo.name}
+          required
           type="text"
           name="name"
           placeholder={t("inputName")}
         />
-        {/* <input
-          onChange={handleChange}
-          value={clientInfo.phone}
-          type="tel"
-          name="phone"
-          placeholder={t("inputPhone")}
-        /> */}
+       
         <PhoneInput
           country={"ua"}
           value={clientInfo.phone}
@@ -225,7 +221,7 @@ const Promotion = () => {
         />
         <button>{t("Order")}</button>
       </form>
-      {statusMessage && <p className={s.statusMessage}>{statusMessage}</p>}
+      {statusMessage && <p className={`${s.statusMessage} ${  !clientInfo.phone.length<12 && s.errorMessage}`}>{statusMessage}</p>}
       <RelatedItems items={promotions} title={"Related Prom"} url={"/promotions/"} />
 
       <div style={{ marginLeft: "auto", marginTop: "8px" }}>
