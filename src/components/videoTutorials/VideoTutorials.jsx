@@ -69,7 +69,7 @@ const VideoTutorials = ({ isMobile }) => {
     try {
       const getVideoByChanelId = async () => {
         const videoList = await fetch(
-          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=PLiicsAp4Y6Sp-QQe-z55MlRJodtxgN6ii&maxResults=10&key=${YOU_TUBE_APIKEY}`
+          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=PLiicsAp4Y6SoSki4tcgiuZlNN2FBAqxXJ&maxResults=10&key=${YOU_TUBE_APIKEY}`
         );
 
         const { items } = await videoList.json();
