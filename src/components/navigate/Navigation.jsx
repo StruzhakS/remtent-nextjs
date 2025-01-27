@@ -74,6 +74,13 @@ const Navigation = ({ footer, toggleBurgerMenu, isMobile }) => {
       >
         {t("Delivery")}
       </Link>
+      <Link
+        onClick={() => handleNavLinkClick("/exchange-and-return")}
+        href={"/exchange-and-return"}
+        className={isActive("/exchange-and-return") ? s.active : ""}
+      >
+        {t("Exchange and return")}
+      </Link>
     </nav>
   );
 };

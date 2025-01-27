@@ -131,11 +131,15 @@
   "used_tent_page_title": "Buy used awnings | Awning repair",
   "used_tent_page_description": "Buy a used awning for various needs at a favorable price. Good condition, saving money and reliable protection from bad weather. Excellent choice for a summer house or business",
   "delivery_page_title": "Delivery and payment | Tent Repair",
-  "deliverys_page_description": "Delivery and payment - find out all the details about the delivery and payment methods for your orders. We offer convenient delivery conditions throughout Ukraine and a variety of payment methods: online, cash on delivery or bank transfer. Check out the delivery time, cost, and additional benefits of our service. Fast, convenient, reliable!", 
+  "deliverys_page_description": "Delivery and payment - find out all the details about the delivery and payment methods for your orders. We offer convenient delivery conditions throughout Ukraine and a variety of payment methods: online, cash on delivery or bank transfer. Check out the delivery time, cost, and additional benefits of our service. Fast, convenient, reliable!",
+  "exchange_page_title": "Exchange and return | Tent repair",
+  "exchanges_page_description": "Exchanges and Returns - read our terms and conditions for product returns and exchanges. We offer a simple and convenient process of returning or replacing products according to the current legislation of Ukraine. Learn about deadlines, required documents and procedure for quick resolution of your issue. We provide quality service and care about our customers!", 
   "Related Prom": "Similar promotions",
   "All promotions": "All promotions",
   "All banner": "All banner",
   "Please fill in all required fields": "Please fill in all required fields",
-  "Delivery": "Delivery and payment"
+  "Delivery": "Delivery and payment",
+  "Exchange and return": "Exchange and return"
+
 
 }
