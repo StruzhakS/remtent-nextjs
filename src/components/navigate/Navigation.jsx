@@ -9,14 +9,14 @@ const Navigation = ({ footer, toggleBurgerMenu, isMobile }) => {
   const router = useRouter();
   const { t } = useTranslation();
 
-  const isActive = path => {
+  const isActive = (path) => {
     if (path === "/") {
       return router.pathname === "/";
     }
     return router.pathname.startsWith(path) && path !== "/";
   };
 
-  const handleNavLinkClick = path => {
+  const handleNavLinkClick = (path) => {
     if (location.pathname === path) {
       window.location.reload();
     }
@@ -67,20 +67,25 @@ const Navigation = ({ footer, toggleBurgerMenu, isMobile }) => {
       >
         {t("Сontacts")}
       </Link>
-      <Link
-        onClick={() => handleNavLinkClick("/delivery")}
-        href={"/delivery"}
-        className={isActive("/delivery") ? s.active : ""}
-      >
-        {t("Delivery")}
-      </Link>
-      <Link
-        onClick={() => handleNavLinkClick("/exchange-and-return")}
-        href={"/exchange-and-return"}
-        className={isActive("/exchange-and-return") ? s.active : ""}
-      >
-        {t("Exchange and return")}
-      </Link>
+      {(footer || isMobile) && (
+        <Link
+          onClick={() => handleNavLinkClick("/delivery")}
+          href={"/delivery"}
+          className={isActive("/delivery") ? s.active : ""}
+        >
+          {t("Delivery")}
+        </Link>
+      )}
+
+      {(footer || isMobile) && (
+        <Link
+          onClick={() => handleNavLinkClick("/exchange-and-return")}
+          href={"/exchange-and-return"}
+          className={isActive("/exchange-and-return") ? s.active : ""}
+        >
+          {t("Exchange and return")}
+        </Link>
+      )}
     </nav>
   );
 };
