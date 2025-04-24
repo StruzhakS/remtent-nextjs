@@ -11,8 +11,8 @@ const FindUs = ({ isMobile }) => {
   const handleClick = () => {
     const latitude = 48.5565792;
     const longitude = 35.0318908;
-    const url = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
-    window.open(url, "_blank");
+    // const url = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
+    // window.open(url, "_blank");
   };
 
   return (
